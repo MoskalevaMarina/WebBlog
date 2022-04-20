@@ -1,0 +1,46 @@
+﻿@model WebBlog.Web.Models.PostsViewModel;
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Статья @Model.Title</h3>
+    <p> </p>
+
+
+    <div class="mb-3">
+
+        <label asp-for="Annotation" class="control-label">Аннотация  </label><br />
+        <p> @Model.Annotation </p>
+
+
+        <label asp-for="PostText" class="control-label">Текст  </label> <br />
+        <p>  @Model.PostText </p>
+
+
+        <label class="control-label">Теги: @Model.Tags.Count()</label> <br />
+        @foreach (var item in Model.Tags)
+        {
+            <p> @item.Name</p>
+        }
+        <div>
+            <label class="control-label">Картинка: </label> <br />
+            <img src=@Model.Image class="img-fluid rounded-start" alt="..." width="300px" height="300px">
+        </div>
+
+        <div>
+            <label class="control-label">Комментарии: @Model.Comments.Count()</label> <br />
+            @foreach (var item in Model.Comments)
+            {
+        <label class="control-label">Пользователь </label>  <h5> @item.User?.UserName</h5> <p>: @item.TextComment</p>
+            }
+        </div>
+
+
+
+
+
+    </div>
+
+    <a class="btn btn-primary" asp-action="Index">Назад </a>
+
+</div>
+

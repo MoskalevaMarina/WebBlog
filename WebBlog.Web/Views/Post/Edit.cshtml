@@ -1,0 +1,43 @@
+﻿@model WebBlog.Web.Models.PostEditViewModel;
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Изменение статьи</h3>
+    <p> </p>
+    <form method="post" asp-controller="Post" asp-action="Edit" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label asp-for="post.Title" class="control-label">Название статьи</label>
+            <input type="text" asp-for="post.Title" class="form-control" />
+
+            <label asp-for="post.Annotation" class="control-label">Аннотация</label>
+            <input type="text" asp-for="post.Annotation" class="form-control" />
+
+            <label asp-for="post.PostText" class="control-label">Текст</label>
+            <input type="text" asp-for="post.PostText" class="form-control" />
+
+            <div>
+
+                <label class="control-label"> Редактирование Тегов: </label>
+                <label class="control-label"> Выберите теги, которые вы хотите удалить из уже имеющихся в статье: </label>
+                <select asp-for="SelectedTagsDel" name="SelectedTagsDel" asp-items="@Model.ListTagsDel" multiple="multiple" class="form-control">
+                </select>
+
+                <label>Выберите теги, которые вы хотите добавить в статью: </label>
+                <select asp-for="SelectedTagsAdd" name="SelectedTagsAdd" asp-items="@Model.ListTagsAdd" multiple="multiple" class="form-control">
+                </select>
+
+                <div class="form-group">
+                    <label>Изменить изображение</label>
+                    <input type="file" name="upload" class="form-control" />
+                </div>
+
+            </div>
+
+            <div class="center">
+                <input type="submit" class="btn btn-primary" value="OK" />
+            </div>
+            </div>
+    </form>
+</div>
+

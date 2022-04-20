@@ -1,0 +1,24 @@
+﻿@model WebBlog.Web.Models.RoleViewModel;
+@{
+    ViewData["Title"] = "Добавление роли";
+}
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Добавление роли</h3>
+    <p> </p>
+    <form class="frm" method="post" asp-controller="Role" asp-action="Create" >
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Наименование</label>
+            <input type="text" class="form-control" asp-for="Name" />
+          
+        </div>
+
+       
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK"/>
+        </div>
+    </form>
+</div>

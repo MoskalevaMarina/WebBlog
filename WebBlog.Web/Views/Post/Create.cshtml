@@ -1,0 +1,40 @@
+﻿@model WebBlog.Web.Models.PostCreateViewModel;
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Добавление статьи</h3>
+    <p> </p>
+    <form class="frm" method="post" asp-controller="Post" asp-action="Create" enctype="multipart/form-data" asp-route-iduser="@Model.post.Id">
+
+        <div class="mb-3">
+            <label asp-for="post.Title" class="control-label">Название статьи</label>
+            <input type="text" asp-for="post.Title" class="form-control" />
+
+            <label asp-for="post.Annotation" class="control-label">Аннотация</label>
+            <input type="text" asp-for="post.Annotation" class="form-control" />
+
+            <label asp-for="post.PostText" class="control-label">Текст</label>
+            <textarea  asp-for="post.PostText" class="form-control" > </textarea>
+
+            <label class="control-label">Теги: </label>
+            <select   asp-for="SelectedTags" name="SelectedTags" asp-items="@Model.ListTags" multiple="multiple" class="form-control">
+
+
+            </select>
+
+            <div class="form-group">
+                <label>Загрузить изображение</label>
+                <input type="file" name="upload" class="form-control" />
+            </div>
+                
+
+
+
+
+        </div>
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK" />
+        </div>
+    </form>
+</div>

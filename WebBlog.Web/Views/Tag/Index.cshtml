@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebBlog.Web.Models.TagViewModel>
+@{
+    ViewBag.Title = "Все теги";
+}
+<a class="btn btn-primary" asp-action="Create">Добавить тег</a>
+<table class="table table-bordered ">
+    <thead class="table-dark">
+        <tr>
+            <th>Название</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td><a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Изменить</a></td>
+            <td>
+                <form asp-controller="Tag" asp-action="Delete" method="post" asp-route-id="@item.Id">
+                    <input class="btn btn-primary" type="submit" value="Удалить" />
+                </form>
+
+            </td>
+
+        </tr>
+    }
+</table>
+

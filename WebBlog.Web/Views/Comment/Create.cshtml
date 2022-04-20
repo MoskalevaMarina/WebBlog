@@ -1,0 +1,24 @@
+﻿@model WebBlog.Web.Models.EditCommentModel;
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Добавление комментария</h3>
+    <p> </p>
+    <form class="frm" method="post" asp-controller="Comment" asp-action="Create">
+
+        <div class="mb-3">
+            <label asp-for="comment.TextComment" class="control-label">Текст</label>
+            <textarea asp-for="comment.TextComment" class="form-control"> </textarea>
+
+            <label class="control-label">Статья: </label>
+            <select name="SelectedPost" asp-items="@Model.ListPosts" class="form-control"></select>
+
+
+
+        </div>
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK" />
+        </div>
+    </form>
+</div>

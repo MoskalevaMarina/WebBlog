@@ -1,0 +1,42 @@
+﻿@model WebBlog.Web.Models.RolesUserModel
+@{
+    ViewBag.Title = "Роли пользователя";
+}
+<div>
+    <a class="btn btn-primary" asp-action="Create">Добавить роль</a>
+</div>
+
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Наименование</th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    @Model.Roles.Count();
+    @foreach (var item in Model.Roles)
+    {
+
+        <tr>
+            <td>@item.Name</td>
+
+
+            <td>
+                <form asp-controller="Role" asp-action="Delete" method="post" asp-route-idrole="@item.Id" asp-route-iduser="@Model.Us.Id">
+                    <input class="btn btn-primary" type="submit" value="Удалить" />
+                </form>
+
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<div>
+
+
+</div>

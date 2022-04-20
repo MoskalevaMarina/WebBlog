@@ -1,0 +1,25 @@
+﻿@model WebBlog.Web.Models.TagViewModel;
+@{
+    ViewData["Title"] = "Добавление тега";
+}
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Добавление тега</h3>
+    <p> </p>
+    <form class="frm" method="post" asp-controller="Tag" asp-action="Create">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Наименование</label>
+            <input type="text" class="form-control" asp-for="Name" />
+
+        </div>
+
+
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK" />
+        </div>
+    </form>
+</div>
+

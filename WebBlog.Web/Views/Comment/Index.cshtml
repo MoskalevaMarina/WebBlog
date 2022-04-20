@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebBlog.Web.Models.CommentModel>;
+
+<div>
+    @if(@User.IsInRole("admin"))
+    {
+    <a class="btn btn-primary" asp-action="Create">Добавить новый комментарий</a>
+  
+    }
+    
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Текст комментария</th>
+            <th>Пользователь</th>
+            <th>Статья</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>@item.TextComment</td>
+            <td>@item.User?.UserName</td>
+            <td>@item.Post?.Title</td>
+            <td>@item.DataComment</td>
+            <td><a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Изменить </a></td>
+            <td>
+                <form asp-controller="Comment" asp-action="Delete" method="post" asp-route-id="@item.Id">
+                    <input class="btn btn-primary" type="submit" value="Удалить" />
+                </form>
+
+            </td>
+        </tr>
+
+    }
+</table>

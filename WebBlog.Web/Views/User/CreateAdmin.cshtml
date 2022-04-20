@@ -1,0 +1,34 @@
+﻿@model WebBlog.Web.Models.AddUserViewModel;
+@{
+    ViewData["Title"] = "Добавление пользователя";
+}
+
+
+<div class="block-reg background-white">
+    <h3 class="center">Добавление пользователя</h3>
+    <p> </p>
+    <form class="frm" method="post" asp-controller="User" asp-action="Create" >
+
+        <div class="mb-3">
+            <label asp-for="UserName" class="form-label">НикНейм</label>
+            <input type="text" class="form-control" asp-for="UserName" />
+            <label asp-for="Password" class="form-label">Пароль</label>
+            <input type="text" class="form-control" asp-for="Password" />
+            <label asp-for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email" />
+            <label asp-for="FirstName" class="form-label">Имя</label>
+            <input type="text" class="form-control" asp-for="FirstName" />
+            <label asp-for="LastName" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" asp-for="LastName" />
+            <label asp-for="Avatar" class="form-label">Аватар</label>
+            <input type="text" class="form-control" asp-for="Avatar" />
+
+        </div>
+
+
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK" />
+        </div>
+    </form>
+</div>

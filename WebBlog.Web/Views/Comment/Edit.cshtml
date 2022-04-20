@@ -1,0 +1,24 @@
+﻿@model WebBlog.Web.Models.CommentModel;
+@{
+    ViewData["Title"] = "Изменение";
+}
+
+
+<div class="block-reg background-white">
+
+    <p> </p>
+    <form class="frm" method="post" asp-controller="Comment" asp-action="Edit" >
+
+        <div class="mb-3">
+            <label asp-for="TextComment" class="form-label">Текст коментария</label>
+            <textarea asp-for="TextComment" class="form-control"> </textarea>
+
+        </div>
+
+
+
+        <div class="center">
+            <input type="submit" class="btn btn-primary" value="OK" />
+        </div>
+    </form>
+</div>
