@@ -34,7 +34,7 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var sp = _mapper.Map<IEnumerable<PostsViewModel>>(rs.gg());
+            var sp = _mapper.Map<IEnumerable<PostsViewModel>>(rs.GetPosts());
             return View(sp);
         }
 

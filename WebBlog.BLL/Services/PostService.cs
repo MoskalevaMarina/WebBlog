@@ -32,7 +32,7 @@ namespace WebBlog.BLL.Services
         public IEnumerable<Post> GetPosts()
         {
             var j = dbb.GetRepository<Post>() as PostRepository;
-            return j.GetAll();
+            return j.GetAllPosts();
         }
 
         
@@ -49,7 +49,7 @@ namespace WebBlog.BLL.Services
             var k = dbb.GetRepository<Tag>() as TagRepository;
             var p = k.Get(idtag);
             var j = dbb.GetRepository<Post>() as PostRepository;
-            var j1 = j.Get(idpost);
+            var j1 = j.GetPostbyid(idpost);
             j.Addtaginpost(p, j1);
         }
 
@@ -57,7 +57,7 @@ namespace WebBlog.BLL.Services
         {
             var k = dbb.GetRepository<Tag>() as TagRepository;
             var j = dbb.GetRepository<Post>() as PostRepository;
-            var j1 = j.Get(idpost);
+            var j1 = j.GetPostbyid(idpost);
 
            for (int i=0; i<sl.Count(); i++)
             {
@@ -70,7 +70,7 @@ namespace WebBlog.BLL.Services
         {
             var k = dbb.GetRepository<Tag>() as TagRepository;
             var j = dbb.GetRepository<Post>() as PostRepository;
-            var j1 = j.Get(idpost);
+            var j1 = j.GetPostbyid(idpost);
 
             for (int i = 0; i < sl.Count(); i++)
             {
@@ -117,7 +117,7 @@ namespace WebBlog.BLL.Services
         public Post GetPost(int id)
         {
             var r = dbb.GetRepository<Post>() as PostRepository;
-            return r.Get(id);
+            return r.GetPostbyid(id);
         }
 
         public IEnumerable<Post> GetPostbyUser(int iduser)

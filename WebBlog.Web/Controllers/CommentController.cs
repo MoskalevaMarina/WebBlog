@@ -28,19 +28,14 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            if (User.IsInRole("user"))
-            {
 
-                User user = us.GetUserbyEmail(User.Identity.Name);
-                RedirectToAction("IndexUserComment", user.Id);
-            }
             var sp = rs.GetComments();
             var cm = _mapper.Map<IEnumerable<CommentModel>>(sp);
             return View("Index", cm);
         }
 
         [HttpGet]
-        public IActionResult IndexUserComment(int id)
+        public IActionResult IndexUserComment()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -50,7 +45,7 @@ namespace WebBlog.Web.Controllers
                 {
                     var sp = rs.GetCommentsbyUser(user.Id);
                     var cm = _mapper.Map<IEnumerable<CommentModel>>(sp);
-                    return View("Index",cm);
+                    return View("IndexUser", cm);
                 }
             }
             return NotFound();
@@ -91,7 +86,7 @@ namespace WebBlog.Web.Controllers
             Comment com = new Comment();
             com.TextComment = pm.NewComment;
             com.UserId = user.Id;
-            com.User = us.GetUser(user.Id);
+            com.User = user;
             com.PostId = idPost;
             com.Post = postService.GetPost(idPost);
             com.DataComment = DateTime.Today.ToLongDateString();
@@ -121,7 +116,14 @@ namespace WebBlog.Web.Controllers
         {
             var r1 = _mapper.Map<Comment>(com);
             rs.UpdateComment(id, r1);
-            return RedirectToAction("Index", "Comment");
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("Index", "Comment");
+            }
+            else
+            {
+                return RedirectToAction("IndexUserComment", "Comment");
+            }
 
         }
 
@@ -134,7 +136,15 @@ namespace WebBlog.Web.Controllers
                 if (com != null)
                 {
                     rs.DeleteComment(com);
-                    return RedirectToAction("Index", "Comment");
+                    if (User.IsInRole("admin"))
+                    {
+                        return RedirectToAction("Index", "Comment");
+                    }
+                    else
+                    {
+                        return RedirectToAction("IndexUserComment", "Comment");
+                    }
+                  
                 }
             }
             return NotFound();

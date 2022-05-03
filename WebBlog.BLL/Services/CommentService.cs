@@ -23,13 +23,13 @@ namespace WebBlog.BLL.Services
         public IEnumerable<Comment> GetComments()
         {
             var k = dbb.GetRepository<Comment>() as CommentRepository;
-            return k.GetAll();
+            return k.GetAllComments();
         }
 
         public IEnumerable<Comment> GetCommentsbyUser(int iduser)
         {
             var l = dbb.GetRepository<User>() as UserRepository;
-            var us1 = l.Get(iduser);  
+            var us1 = l.GetUser(iduser);  
             var k = dbb.GetRepository<Comment>() as CommentRepository;
 
             return k.GetbyUser(us1);
@@ -52,7 +52,9 @@ namespace WebBlog.BLL.Services
 
         public void UpdateComment(int id1, Comment comment)
         {
-            var r1 = dbb.GetRepository<Comment>().Get(id1);
+            var r2 = dbb.GetRepository<Comment>() as CommentRepository;
+               
+            var r1= r2.GetComment(id1);
             if (r1 != null)
             {
                 r1.TextComment = comment.TextComment;
@@ -71,10 +73,11 @@ namespace WebBlog.BLL.Services
         }
         public Comment GetComment(int id)
         {
-           // if (id == 0)
-           //     throw new ValidationException("Не установлено id телефона");
+            var r2 = dbb.GetRepository<Comment>() as CommentRepository;
 
-            return dbb.GetRepository<Comment>().Get(id);
+            var r1 = r2.GetComment(id);
+
+            return r1;
         }
 
         public IEnumerable<SelectListItem> GetPostsSelect()

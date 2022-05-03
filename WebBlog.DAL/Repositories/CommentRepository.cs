@@ -16,12 +16,12 @@ namespace WebBlog.DAL.Repositories
         {
         }
 
-        public Comment Get(int id)
+        public Comment GetComment(int id)
         {
             return Set.Include(m=>m.Post).Include(m=>m.User).FirstOrDefault(m=>m.Id==id);
         }
 
-       public  IEnumerable<Comment> GetAll()
+       public  IEnumerable<Comment> GetAllComments()
         {
             var rl = Set.Include(m => m.Post).Include(m => m.User).AsEnumerable();
             return rl;
@@ -36,7 +36,7 @@ namespace WebBlog.DAL.Repositories
         /// <returns>список комментариев</returns>
         public IEnumerable<Comment> GetbyPost(Post post)
         {
-            var rl = Set.Where(m => m.PostId == post.Id).AsEnumerable();
+            var rl = Set.Include(m=>m.Post).Include(m=>m.User).Where(m => m.PostId == post.Id).AsEnumerable();
             return rl;
         }
 
@@ -47,7 +47,7 @@ namespace WebBlog.DAL.Repositories
         /// <returns>список комментариев</returns>
         public IEnumerable<Comment> GetbyUser(User user)
         {
-            var rl = Set.Where(m => m.UserId == user.Id).AsEnumerable();
+            var rl = Set.Include(m => m.Post).Include(m => m.User).Where(m => m.UserId == user.Id).AsEnumerable();
             return rl;
         }
     }
