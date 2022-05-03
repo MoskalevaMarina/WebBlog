@@ -12,6 +12,7 @@ namespace WebBlog.DAL.Entities
         public int Id { get; set; }
         [Display (Name ="Наименование")]
         public string Name { get; set; }
+        public string Description { get; set; }
         public List<User> Users { get; set; }
       //  public Role()
      //   {

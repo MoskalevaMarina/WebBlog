@@ -6,34 +6,39 @@
     <title>@ViewData["Title"] - WebBlog.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg  navbar-dark  justify-content-between" style="background-color:#2a2922; color:white">
             <div class="container">
-               
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Статьи</a>
+                            <a class="nav-link " asp-area="" asp-controller="Post" asp-action="Index">Статьи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Пользователи</a>
+                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="IndexAdmin">Пользователи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Роли</a>
+                            <a class="nav-link " asp-area="" asp-controller="Role" asp-action="Index">Роли</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tag" asp-action="Index">Тэги</a>
+                            <a class="nav-link " asp-area="" asp-controller="Tag" asp-action="Index">Тэги</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Comment" asp-action="Index">Комментарии</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Logout">Выход</a>
+                            <a class="nav-link " asp-area="" asp-controller="Comment" asp-action="Index">Комментарии</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a class="nav-link " asp-controller="User" asp-action="Logout">Выход</a>
+                        </li>
+                        </ul>
+
                 </div>
             </div>
         </nav>
@@ -47,7 +52,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - WebBlog.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Разработка персонального блога
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

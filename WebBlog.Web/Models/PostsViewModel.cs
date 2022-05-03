@@ -23,7 +23,7 @@ namespace WebBlog.Web.Models
         public List<Comment> Comments { get; set; }
 
       
-
+        public string NewComment { get; set; }
 
     }
 }

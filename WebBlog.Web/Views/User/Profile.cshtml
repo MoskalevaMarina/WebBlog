@@ -1,40 +1,81 @@
 ﻿@model WebBlog.Web.Models.UserViewModel;
 
-
-<div class="block-reg background-white">
-    <h3 class="center">Пользователь @Model.UserName</h3>
-    <p> </p>
+<body>
 
 
-    <div class="mb-3">
+    
+    <hr>
+    <div class="container bootstrap snippet">
+        <div class="row ">
+            <div class="col-5">
+                <h1 class="text-center">@Model.UserName</h1>
+                <div><img title="profile image" class="img-responsive img-fluid" src="@Model.Avatar"> </div>
+              <div >
+                <ul class="list-group list-group-horizontal d-flex justify-content-center">
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Статьи</strong></span> @Model.Posts.Count()</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Теги</strong></span> @Model.Tags.Count()</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Комментарии</strong></span> @Model.Comments.Count()</li>
+                </ul>
+                  </div>
+            </div>
+            <div class="col-5">
 
-        <label asp-for="FirstName" class="control-label">Имя  </label><br />
-        <p> @Model.FirstName </p>
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <hr>
 
-        <label asp-for="LastName" class="control-label">Фамилия  </label><br />
-        <p> @Model.LastName </p>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>Имя</h4></label>
+                                <p> @Model.FirstName</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>Фамилия</h4></label>
+                                <p> @Model.LastName</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>Пароль</h4></label>
+                                <p> @Model.Password</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>Email</h4></label>
+                                <p> @Model.Email</p>
+                            </div>
+                        </div>
+                        <hr>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <label class="control-label"><h4>Роли:</h4> </label> <br />
+                            @foreach (var item in Model.Roles)
+                            {
+                                <p> @item.Name</p>
+                            }
+                        }
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-user"> Редактировать  </a>
+                    </div>
+                </div>
+            </div>
 
-        <label asp-for="Email" class="control-label">Email </label><br />
-        <p> @Model.Email </p>
 
-        <label asp-for="Password" class="control-label">Пароль  </label><br />
-        <p> @Model.Password </p> 
 
-        <label asp-for="Avatar" class="control-label">Аватарка  </label><br />
-        <img src="@Model.Avatar" width="300px" height="300px" /> <br />
+           
 
-        @if (User.IsInRole("admin"))
-        {
-        <label class="control-label">Роли: </label> <br />
-        @foreach (var item in Model.Roles)
-        {
-            <p> @item.Name</p>
-        }
-        }
-        else
-        {
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Редактировать </a>
-        }
+
+
+            </div><!--/col-3-->
+
+        </div>
+        <hr>
 
     </div>
-</div>
+
+</body>

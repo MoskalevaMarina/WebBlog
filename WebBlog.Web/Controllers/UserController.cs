@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -20,12 +23,14 @@ namespace WebBlog.Web.Controllers
         public UserService service;
         public RoleService roleService;
         private IMapper _mapper;
+        IWebHostEnvironment _appEnvironment;
 
-        public UserController(UserService service1, IMapper mapper, RoleService roleService1)
+        public UserController(UserService service1, IMapper mapper, RoleService roleService1, IWebHostEnvironment _appEnvironment1)
         {
             service = service1;
             _mapper = mapper;
             roleService = roleService1;
+            _appEnvironment = _appEnvironment1;
         }
 
         //  [Route("")]
@@ -59,7 +64,7 @@ namespace WebBlog.Web.Controllers
 
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Profile(int id)
         {
             if (id != 0)
@@ -75,7 +80,7 @@ namespace WebBlog.Web.Controllers
 
         }
 
-        [HttpGet]
+
         public IActionResult Profile1()
         {
             if (User.Identity.IsAuthenticated)
@@ -97,17 +102,50 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("CreateAdmin");
+            AddUserViewModel model = new AddUserViewModel();
+            model.sproles = roleService.GetRoles().ToList();
+            return View("CreateAdmin", model);
         }
 
         //sozdanie usera adminom
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(AddUserViewModel user)
+        public IActionResult Create(AddUserViewModel user, int[] Selectedrole, IFormFile upload)
         {
+            string path;
+            if (upload != null)
+            {
+                // путь к папке Files
+                path = "/images/images_user/" + upload.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    upload.CopyTo(fileStream);
+                }
+            }
+            else
+            {
+                path = "/images/images_user/avatar7.jpg";
+            }
+
+            user.Avatar = path;
+
             var r1 = _mapper.Map<User>(user);
             service.AddUser(r1);
-            return RedirectToAction("Index", "User");
+
+            int gg = service.GetUsers().Where(m => m.Email == r1.Email).LastOrDefault().Id;
+
+
+            if (Selectedrole.Length != 0)
+            {
+                foreach (var item in Selectedrole)
+                {
+                    service.AddRolebyUser(gg, item);
+                }
+            }
+            service.UpdateUser(gg, r1);
+
+            return RedirectToAction("IndexAdmin", "User");
         }
 
 
@@ -121,6 +159,7 @@ namespace WebBlog.Web.Controllers
                 if (user != null)
                 {
                     var r1 = _mapper.Map<UserViewModel>(user);
+                    r1.sproles = roleService.GetRoles().ToList();
                     return View(r1);
                 }
             }
@@ -129,11 +168,40 @@ namespace WebBlog.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(UserViewModel user)
+        public IActionResult Edit(UserViewModel user, int[] Selectedrole, IFormFile upload)
         {
+            string path;
+            if (upload != null)
+            {
+                // путь к папке Files
+                path = "/images/images_user/" + upload.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    upload.CopyTo(fileStream);
+                }
+                user.Avatar = path;
+            }
+
             var r1 = _mapper.Map<User>(user);
+            r1.Avatar = user.Avatar;
+            if (Selectedrole.Length != 0)
+            {
+                foreach (var item in Selectedrole)
+                {
+                    service.AddRolebyUser(user.Id, item);
+                }
+            }
             service.UpdateUser(user.Id, r1);
-            return RedirectToAction("Index", "User");
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("IndexAdmin", "User");
+            }
+            else
+            {
+                return RedirectToAction("Profile1", "User");
+            }
+
 
         }
 
@@ -168,8 +236,11 @@ namespace WebBlog.Web.Controllers
                 {
                     // добавляем пользователя в бд
                     user = new User { Email = model.Email, Password = model.Password };
+                    user.Avatar = "/images/images_user/avatar7.jpg";
+                    user.FirstName = "Неизвестный";
+                    user.LastName = "Неизвестный";
                     service.AddUser(user);
-                   
+
                     Authenticate(user); // аутентификация
 
                     return RedirectToAction("Index", "Home");

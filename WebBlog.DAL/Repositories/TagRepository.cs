@@ -18,18 +18,18 @@ namespace WebBlog.DAL.Repositories
 
         public Tag GetTag(int id)
         {
-            return Set.Include(m => m.Posts).Where(m => m.Id == id).FirstOrDefault();
+            return Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Tag> Find(Func<Tag, Boolean> predicate)
         {
-            var rol = Set.Include(m => m.Posts).AsEnumerable().Where(predicate).ToList();
+            var rol = Set.Include(m => m.Posts).Include(m => m.User).AsEnumerable().Where(predicate).ToList();
             return rol;
         }
 
         public List<SelectListItem> GetSelectTags()
         {
-            var rl = Set.Include(m => m.Posts).Select(a => new SelectListItem()
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).Select(a => new SelectListItem()
                           {
                               Value = a.Id.ToString(),
                               Text = a.Name
@@ -40,7 +40,7 @@ namespace WebBlog.DAL.Repositories
 
         public List<SelectListItem> GetSelectTags(Post post)
         {
-            var rl = Set.Include(m => m.Posts).Where(m=>m.Posts.Contains(post)).Select(a => new SelectListItem()
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m=>m.Posts.Contains(post)).Select(a => new SelectListItem()
             {
                 Value = a.Id.ToString(),
                 Text = a.Name
@@ -64,7 +64,7 @@ namespace WebBlog.DAL.Repositories
 
         public IEnumerable<Tag> GetAllTags()
         {
-            var rl = Set.Include(m=>m.Posts).ToList();
+            var rl = Set.Include(m=>m.Posts).Include(m => m.User).ToList();
             return rl;
         }
 
@@ -75,13 +75,13 @@ namespace WebBlog.DAL.Repositories
         /// <returns>список тегов</returns>
         public IEnumerable<Tag> GetbyPost(Post post)
         {
-            var rl = Set.Include(m => m.Posts).Where(m => m.Posts.Contains(post)).AsEnumerable();
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Posts.Contains(post)).AsEnumerable();
 
             return rl;
         }
         public IEnumerable<Tag> GetbyUser(int iduser)
         {
-            var rl = Set.Include(m => m.Posts).Where(m => m.UserId==iduser).AsEnumerable();
+            var rl = Set.Include(m => m.Posts).Include(m=>m.User).Where(m => m.UserId==iduser).AsEnumerable();
 
             return rl;
         }

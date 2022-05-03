@@ -1,7 +1,7 @@
 ﻿@model WebBlog.Web.Models.PostEditViewModel;
 
 
-<div class="block-reg background-white">
+<div class="block-reg container-form">
     <h3 class="center">Изменение статьи</h3>
     <p> </p>
     <form method="post" asp-controller="Post" asp-action="Edit" enctype="multipart/form-data">
@@ -35,9 +35,12 @@
             </div>
 
             <div class="center">
-                <input type="submit" class="btn btn-primary" value="OK" />
+                <input type="submit" class="btn btn-add-post" value="Сохранить измеения" />
             </div>
-            </div>
+        </div>
     </form>
+    <div>
+        <a asp-action="IndexUserPost" asp-controller="Post">Выйти без сохранения</a>
+    </div>
 </div>
 

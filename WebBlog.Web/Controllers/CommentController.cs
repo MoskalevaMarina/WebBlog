@@ -82,6 +82,24 @@ namespace WebBlog.Web.Controllers
             return RedirectToAction("Index", "Comment");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create1(PostsViewModel pm, int idPost)
+        {
+            User user = us.GetUserbyEmail(User.Identity.Name);
+
+            Comment com = new Comment();
+            com.TextComment = pm.NewComment;
+            com.UserId = user.Id;
+            com.User = us.GetUser(user.Id);
+            com.PostId = idPost;
+            com.Post = postService.GetPost(idPost);
+            com.DataComment = DateTime.Today.ToLongDateString();
+
+            rs.AddComment(com);
+            return RedirectToAction("Details", "Post", new { id = idPost });
+        }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {

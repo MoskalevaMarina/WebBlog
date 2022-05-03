@@ -1,24 +1,42 @@
 ﻿@model WebBlog.Web.Models.LoginModel
 
-<h2>Вход на сайт</h2>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/LoginandRegister.css" />
+</head>
+<body>
 
-<a asp-action="Register" asp-controller="User">Регистрация</a>
+      
 
-<form asp-action="Login" asp-controller="User" asp-anti-forgery="true">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div>
-        <div class="form-group">
-            <label asp-for="Email">Введите Email</label>
-            <input type="text" asp-for="Email" />
-            <span asp-validation-for="Email" />
-        </div>
-        <div class="form-group">
-            <label asp-for="Password">Введите пароль</label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Войти" class="btn" />
-        </div>
-    </div>
-</form>
+            <div class="col-md-4 offset-md-4">
+                <div class="form-container">
+
+                    <h3 class="title">Login</h3>
+                    <form class="form-horizontal" asp-action="Login" asp-controller="User" asp-anti-forgery="true">
+                        <div class="validation" asp-validation-summary="ModelOnly"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Email">Email</label>
+                            <input type="text" asp-for="Email" class="form-control" placeholder="email address" />
+                            <span asp-validation-for="Email" />
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password">Пароль</label>
+                            <input asp-for="Password" class="form-control" placeholder="password" type="password" />
+                            <span asp-validation-for="Password" />
+
+                        </div>
+                        <input type="submit" value="Вход" class="btn btn-default" />
+                    </form>
+                    <div class="form-group">
+                        <a asp-action="Register" class="btn" asp-controller="User">Еще нет аккаунта? Зарегистрируйтесь</a>
+                   </div>
+                    </div>
+                </div>
+
+       
+    </body>

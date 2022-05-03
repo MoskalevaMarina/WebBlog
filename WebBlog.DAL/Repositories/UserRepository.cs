@@ -54,7 +54,10 @@ namespace WebBlog.DAL.Repositories
         public User AddRoleUser(int iduser, Role role)
         {
             var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Tags).Where(m => m.Id == iduser).FirstOrDefault();
-            rl.Roles.Add(role);
+            if (!rl.Roles.Contains(role))
+            {
+                rl.Roles.Add(role);
+            }
 
             //  var rl = Set.Include(m => m.Roles).Where(m => m.Roles.RemoveAt().Contains(role)).AsEnumerable();
             return rl;

@@ -4,31 +4,48 @@
 }
 
 
-<div class="block-reg background-white">
+<div class="block-reg container-form">
     <h3 class="center">Добавление пользователя</h3>
     <p> </p>
-    <form class="frm" method="post" asp-controller="User" asp-action="Create" >
+    <form class="frm" method="post" asp-controller="User" asp-action="Create" enctype="multipart/form-data">
 
         <div class="mb-3">
+            <label class="control-label">Роли: </label>
+            <div>
+                @foreach (var item in @Model.sproles)
+                {
+                    @if (item.Name == "user")
+                    {
+                        <input type="checkbox" id=@item.Id name="ss" value=@item.Id checked disabled="disabled">
+                        <label for=@item.Id> @item.Name </label>
+                    }
+                    else
+                    {
+                        <input type="checkbox" id=@item.Id name="Selectedrole" value=@item.Id>
+                        <label for=@item.Id> @item.Name </label>
+                    }
+                }
+            </div>
+
             <label asp-for="UserName" class="form-label">НикНейм</label>
             <input type="text" class="form-control" asp-for="UserName" />
             <label asp-for="Password" class="form-label">Пароль</label>
-            <input type="text" class="form-control" asp-for="Password" />
+            <input type="password" class="form-control" asp-for="Password" />
             <label asp-for="Email" class="form-label">Email</label>
-            <input type="text" class="form-control" asp-for="Email" />
+            <input type="email" class="form-control" asp-for="Email" placeholder="UserName@gmail.com" />
             <label asp-for="FirstName" class="form-label">Имя</label>
             <input type="text" class="form-control" asp-for="FirstName" />
             <label asp-for="LastName" class="form-label">Фамилия</label>
             <input type="text" class="form-control" asp-for="LastName" />
-            <label asp-for="Avatar" class="form-label">Аватар</label>
-            <input type="text" class="form-control" asp-for="Avatar" />
 
+            <div class="form-group">
+                <label asp-for="Avatar" class="form-label">Аватар</label>
+                <input type="file" name="upload" class="form-control" />
+            </div>
         </div>
 
-
-
         <div class="center">
-            <input type="submit" class="btn btn-primary" value="OK" />
+            <input type="submit" class="btn btn-add-user" value="Добавить" />
         </div>
     </form>
 </div>

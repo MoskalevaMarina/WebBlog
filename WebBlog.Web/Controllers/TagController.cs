@@ -64,6 +64,7 @@ namespace WebBlog.Web.Controllers
             User user = us.GetUserbyEmail(User.Identity.Name);
 
             r1.UserId = user.Id;
+            r1.User = user;
 
             rs.AddTag(r1);
             return RedirectToAction("Index", "Tag");

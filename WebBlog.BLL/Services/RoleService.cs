@@ -40,6 +40,7 @@ namespace WebBlog.BLL.Services
             if(r1!=null)
             {
                 r1.Name = role.Name;
+                r1.Description = role.Description;
               //  r1.Users = role.Users;
 
             }

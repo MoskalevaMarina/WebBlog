@@ -1,0 +1,144 @@
+﻿.card1 {
+    background: #f3ebdd;
+    border-radius: 20px;
+    box-shadow: 14px 14px 20px #cbced1;
+    max-width: 700px
+}
+
+
+
+.btn1 {
+    background-color: #506d2f;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    border: none;
+}
+
+
+.btn-add {
+    background-color: #7d5642;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 5px
+}
+
+.btn1:hover,
+.btn1:focus {
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-add:hover,
+.btn-add:focus {
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-post {
+    background-color: #506d2f;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.btn-add-post {
+    background-color: #7d5642;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    max-width: 700px
+}
+
+.badge {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: #2a2922;
+}
+
+.container-form {
+    max-width: 700px;
+}
+
+.aticle-text {
+    display: table-row;
+    border-top: 1px dotted #506d2f;
+    font-size: 15px
+}
+
+.comment-text {
+    display: table-row;
+    border: 2px solid #506d2f;
+    font-size: 14px
+}
+
+.comment-container .badge {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: #2a2922;
+    color: white
+}
+
+.comment-container {
+    background: #f3ebdd;
+    max-width: 400px
+}
+
+.btn-user {
+    background-color: #2a2922;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.btn-add-user {
+    background-color: #7d5642;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    max-width: 700px
+}
+
+.badge-user {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: #506d2f;
+}

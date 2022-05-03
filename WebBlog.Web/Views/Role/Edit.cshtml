@@ -4,21 +4,26 @@
 }
 
 
-<div class="block-reg background-white">
-   
+<div class="block-reg col-md-6">
+
     <p> </p>
-    <form class="frm" method="post" asp-controller="Role" asp-action="Edit" >
+    <form class="frm" method="post" asp-controller="Role" asp-action="Edit">
 
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Наименование</label>
             <input type="text" class="form-control" asp-for="Name" />
-
         </div>
 
-
+        <div>
+            <label asp-for="Description" class="form-label">Описание</label>
+            <textarea class="form-control" asp-for="Description"> </textarea>
+        </div>
 
         <div class="center">
-            <input type="submit" class="btn btn-primary" value="OK" />
+            <input type="submit" class="btn btn-add" value="Сохранить" />
         </div>
     </form>
+    <div>
+        <a asp-action="Index" asp-controller="Role">Перейти к списку всех ролей</a>
+    </div>
 </div>

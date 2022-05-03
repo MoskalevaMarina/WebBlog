@@ -4,22 +4,24 @@
 }
 
 
-<div class="block-reg background-white">
+<div class="block-reg background-white col-md-6">
     <h3 class="center">Добавление тега</h3>
     <p> </p>
     <form class="frm" method="post" asp-controller="Tag" asp-action="Create">
 
-        <div class="mb-3">
+        <div >
             <label asp-for="Name" class="form-label">Наименование</label>
             <input type="text" class="form-control" asp-for="Name" />
 
         </div>
 
-
-
-        <div class="center">
-            <input type="submit" class="btn btn-primary" value="OK" />
+        <div >
+            <input type="submit" class="btn btn-add"  value="Добавить" />
         </div>
     </form>
+    <p> </p>
+    <div >
+        <a asp-action="Index" asp-controller="Tag">Перейти к списку всех тегов</a>
+    </div>
 </div>
 

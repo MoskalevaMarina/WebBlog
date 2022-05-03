@@ -33,5 +33,8 @@ namespace WebBlog.Web.Models
         public List<Comment> Comments { get; set; }
         public List<Post> Posts { get; set; }
         public List<Role> Roles { get; set; }
+
+        public List<Role> sproles { get; set; }
+
     }
 }

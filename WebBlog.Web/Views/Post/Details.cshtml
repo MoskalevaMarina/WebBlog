@@ -1,46 +1,64 @@
 ﻿@model WebBlog.Web.Models.PostsViewModel;
 
 
-<div class="block-reg background-white">
-    <h3 class="center">Статья @Model.Title</h3>
+<div class="block-reg container-form">
+    <h3 class="center"> @Model.Title</h3>
     <p> </p>
-
-
-    <div class="mb-3">
-
-        <label asp-for="Annotation" class="control-label">Аннотация  </label><br />
-        <p> @Model.Annotation </p>
-
-
-        <label asp-for="PostText" class="control-label">Текст  </label> <br />
-        <p>  @Model.PostText </p>
-
-
-        <label class="control-label">Теги: @Model.Tags.Count()</label> <br />
-        @foreach (var item in Model.Tags)
+    <div>
+        @foreach (var item1 in Model.Tags)
         {
-            <p> @item.Name</p>
+            <span class="badge  badge-info "> @item1.Name  </span>
         }
-        <div>
-            <label class="control-label">Картинка: </label> <br />
-            <img src=@Model.Image class="img-fluid rounded-start" alt="..." width="300px" height="300px">
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src=@Model.Image class="img-fluid rounded-start" alt="..." width="200px" height="200px">
+        </div>
+        <div class="col-md-8">
+            <p> @Model.Annotation </p>
         </div>
 
-        <div>
-            <label class="control-label">Комментарии: @Model.Comments.Count()</label> <br />
+    </div>
+    <div>
+
+        <div class="aticle-text">
+            <p>  @Model.PostText </p>
+        </div>
+
+
+        <div class="text-right">
+            <p> Автор: @Model.User.UserName </p>
+        </div>
+        <div class="comment-container">
+            <h4 >Комментарии: </h4> 
             @foreach (var item in Model.Comments)
             {
-        <label class="control-label">Пользователь </label>  <h5> @item.User?.UserName</h5> <p>: @item.TextComment</p>
+               <hr />
+                    <p class="comment-text"> @item.TextComment </p>
+               
+                <div class="text-right">
+                    <span class="badge" > @item.User?.UserName </span>
+                </div>
+
+            }
+
+            @if (User.Identity.IsAuthenticated)
+            {
+            <form asp-controller="Comment" asp-action="Create1" method="post" asp-route-idPost="@Model.Id">
+
+                <textarea asp-for="@Model.NewComment" class="form-control"> </textarea>
+                <input class="btn btn-post" type="submit" value="Оставить комментарий" />
+            </form>
             }
         </div>
 
 
-
-
-
     </div>
 
-    <a class="btn btn-primary" asp-action="Index">Назад </a>
+    <div>
+        <a asp-action="Index" asp-controller="Post">Перейти к списку всех статей</a>
+    </div>
 
 </div>
 

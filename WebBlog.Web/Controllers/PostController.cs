@@ -39,7 +39,7 @@ namespace WebBlog.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult IndexUserPost(int id)
+        public IActionResult IndexUserPost()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -101,16 +101,21 @@ namespace WebBlog.Web.Controllers
 
             rs.AddPost(r1);
 
-            if (SelectedTags.Count() != 0)
+            int gg = rs.GetPosts().Where(m=>m.Title==r1.Title).LastOrDefault().Id;
+
+
+            if (SelectedTags.Length != 0)
             {
-                rs.AddPostSelecttag(SelectedTags, r1.Id);
+                rs.AddPostSelecttag(SelectedTags, gg);
             }
-          //  rs.UpdatePost(r1.Id, r1);
+            rs.UpdatePost(gg, r1);
+            //  rs.UpdatePost(r1.Id, r1);
             // rs.AddComment(r1);*/
-            return RedirectToAction("Index", "Post");
+            return RedirectToAction("IndexUserPost", "Post");
             //Content($"{SelectedTags[0]}   {SelectedTags[1]}  {r1.Tags.Count()}"); //
         }
 
+       
         public IActionResult Details(int id)
         {
             if (id != 0)
@@ -188,7 +193,7 @@ namespace WebBlog.Web.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Post");
+            return RedirectToAction("IndexUserPost", "Post");
 
         }
 
@@ -203,7 +208,7 @@ namespace WebBlog.Web.Controllers
                 if (post != null)
                 {
                     rs.DeletePost(post);
-                    return RedirectToAction("Index", "Post");
+                    return RedirectToAction("IndexUserPost", "Post");
                 }
             }
             return NotFound();
