@@ -1,20 +1,23 @@
-﻿@model WebBlog.Web.Models.PostCreateViewModel;
+﻿@model WebBlog.Web.Models.PostsViewModel;
 
 
 <div class="block-reg container-form">
     <h3 class="center">Добавление статьи</h3>
     <p> </p>
-    <form class="frm" method="post" asp-controller="Post" asp-action="Create" enctype="multipart/form-data" asp-route-iduser="@Model.post.Id">
+    <form class="frm" method="post" asp-controller="Post" asp-action="Create" enctype="multipart/form-data" asp-route-iduser="@Model.Id">
 
-        <div >
-            <label asp-for="post.Title" class="control-label">Название статьи</label>
-            <input type="text" asp-for="post.Title" class="form-control" />
+        <div>
+            <label asp-for="Title" class="control-label">Название статьи</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title"></span>
 
-            <label asp-for="post.Annotation" class="control-label">Аннотация</label>
-            <input type="text" asp-for="post.Annotation" class="form-control" />
+            <label asp-for="Annotation" class="control-label">Аннотация</label>
+            <input type="text" asp-for="Annotation" class="form-control" />
+            <span asp-validation-for="Annotation"></span>
 
-            <label asp-for="post.PostText" class="control-label">Текст</label>
-            <textarea asp-for="post.PostText" class="form-control"> </textarea>
+            <label asp-for="PostText" class="control-label">Текст</label>
+            <textarea asp-for="PostText" class="form-control"> </textarea>
+            <span asp-validation-for="PostText"></span>
 
             <label class="control-label">Теги(чтобы выбрать несколько удерживайте нажатой клавишу Ctrl): </label>
             <select asp-for="SelectedTags" name="SelectedTags" asp-items="@Model.ListTags" multiple="multiple" class="form-control">

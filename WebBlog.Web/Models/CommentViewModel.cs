@@ -11,10 +11,5 @@ namespace WebBlog.Web.Models
     {
         public IEnumerable<Comment> Comments { get; set; }
 
-      //  public SelectList Users { get; set; }
-     //   public SelectList Posts { get; set; }
-
-       
-
     }
 }

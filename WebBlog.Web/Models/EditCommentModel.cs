@@ -10,7 +10,6 @@ namespace WebBlog.Web.Models
     public class EditCommentModel
     {
         public Comment comment { get; set; }
-
         public IEnumerable<SelectListItem> ListPosts { get; set; }
         public int SelectedPost { set; get; }
        

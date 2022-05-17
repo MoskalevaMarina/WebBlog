@@ -12,10 +12,12 @@
         <div>
             <label asp-for="Name" class="form-label">Наименование</label>
             <input type="text" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
         </div>
         <div>
             <label asp-for="Description" class="form-label">Описание</label>
-            <textarea  class="form-control" asp-for="Description"> </textarea>
+            <textarea class="form-control" asp-for="Description"> </textarea>
+            <span asp-validation-for="Description"></span>
         </div>
 
 

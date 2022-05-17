@@ -1,0 +1,253 @@
+2022-05-13 22:31:07.9652 Info Message Template Auto Format enabled
+2022-05-13 22:31:08.1440 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-13 22:31:08.3098 Info Adding target FileTarget(Name=allfile)
+2022-05-13 22:31:08.3664 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-13 22:31:08.5779 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-13 22:34:32.8522 Info Message Template Auto Format enabled
+2022-05-13 22:34:32.9178 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-13 22:34:33.0156 Info Adding target FileTarget(Name=allfile)
+2022-05-13 22:34:33.0323 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-13 22:34:33.0847 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-13 22:38:17.5248 Info Message Template Auto Format enabled
+2022-05-13 22:38:17.5990 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-13 22:38:17.7351 Info Adding target FileTarget(Name=allfile)
+2022-05-13 22:38:17.7547 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-13 22:38:17.9145 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-13 22:52:25.7554 Info Message Template Auto Format enabled
+2022-05-13 22:52:25.8079 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-13 22:52:25.9758 Info Adding target FileTarget(Name=allfile)
+2022-05-13 22:52:26.0256 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-13 22:52:26.2813 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 10:18:40.7081 Info Message Template Auto Format enabled
+2022-05-14 10:18:40.9116 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 10:18:41.2125 Info Adding target FileTarget(Name=allfile)
+2022-05-14 10:18:41.4846 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 10:18:41.4846 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 10:18:41.8971 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 10:27:25.3410 Info Message Template Auto Format enabled
+2022-05-14 10:27:25.3865 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 10:27:25.6010 Info Adding target FileTarget(Name=allfile)
+2022-05-14 10:27:25.6981 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 10:27:25.7217 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 10:27:25.8662 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 17:28:07.0321 Info Message Template Auto Format enabled
+2022-05-14 17:28:07.0577 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 17:28:07.1574 Info Adding target FileTarget(Name=allfile)
+2022-05-14 17:28:07.1768 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 17:28:07.1768 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 17:28:07.3328 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:14:52.1471 Info Message Template Auto Format enabled
+2022-05-14 19:14:52.1664 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:14:52.2372 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:14:52.2561 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:14:52.2561 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:14:52.3111 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:34:24.3406 Info Message Template Auto Format enabled
+2022-05-14 19:34:24.3997 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:34:24.5118 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:34:24.5390 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:34:24.5390 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:34:24.7020 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:37:53.1721 Info Message Template Auto Format enabled
+2022-05-14 19:37:53.2577 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:37:53.4247 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:37:53.5012 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:37:53.5012 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:37:53.6116 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:38:50.0508 Info Message Template Auto Format enabled
+2022-05-14 19:38:50.0800 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:38:50.2074 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:38:50.2378 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:38:50.2378 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:38:50.3772 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:39:54.6134 Info Message Template Auto Format enabled
+2022-05-14 19:39:54.6730 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:39:54.8824 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:39:54.9315 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:39:54.9361 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:39:55.0461 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:52:43.1727 Info Message Template Auto Format enabled
+2022-05-14 19:52:43.2159 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:52:43.3669 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:52:43.4087 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:52:43.4316 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:52:43.5577 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:56:50.5496 Info Message Template Auto Format enabled
+2022-05-14 19:56:50.5956 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:56:50.7884 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:56:50.8730 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:56:50.8769 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:56:50.9800 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 19:59:45.0599 Info Message Template Auto Format enabled
+2022-05-14 19:59:45.1340 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 19:59:45.2587 Info Adding target FileTarget(Name=allfile)
+2022-05-14 19:59:45.3009 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 19:59:45.3009 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 19:59:45.4708 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 20:21:34.3975 Info Message Template Auto Format enabled
+2022-05-14 20:21:34.5076 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 20:21:34.8672 Info Adding target FileTarget(Name=allfile)
+2022-05-14 20:21:35.0571 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 20:21:35.0914 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 20:21:35.1440 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 20:29:44.8857 Info Message Template Auto Format enabled
+2022-05-14 20:29:45.0024 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 20:29:45.1842 Info Adding target FileTarget(Name=allfile)
+2022-05-14 20:29:45.2188 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 20:29:45.2341 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 20:29:45.3306 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 21:55:21.4020 Info Message Template Auto Format enabled
+2022-05-14 21:55:21.4878 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 21:55:21.6362 Info Adding target FileTarget(Name=allfile)
+2022-05-14 21:55:21.6651 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 21:55:21.7164 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 21:55:21.7912 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:00:55.6680 Info Message Template Auto Format enabled
+2022-05-14 22:00:55.7158 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:00:55.8381 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:00:55.8680 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:00:55.8680 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:00:55.9632 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:01:52.8954 Info Message Template Auto Format enabled
+2022-05-14 22:01:53.1002 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:01:53.3217 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:01:53.3731 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:01:53.3731 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:01:53.5202 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:12:29.4203 Info Message Template Auto Format enabled
+2022-05-14 22:12:29.5981 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:12:29.8504 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:12:29.9053 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:12:29.9053 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:12:30.1067 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:14:12.3448 Info Message Template Auto Format enabled
+2022-05-14 22:14:12.4864 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:14:12.6859 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:14:12.7274 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:14:12.7331 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:14:12.9333 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:21:40.7835 Info Message Template Auto Format enabled
+2022-05-14 22:21:40.8962 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:21:41.0379 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:21:41.0814 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:21:41.0814 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:21:41.2157 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:25:17.3313 Info Message Template Auto Format enabled
+2022-05-14 22:25:17.4181 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:25:17.5778 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:25:17.6803 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:25:17.6803 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:25:17.8522 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:29:16.9643 Info Message Template Auto Format enabled
+2022-05-14 22:29:17.0920 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:29:17.2585 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:29:17.3186 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:29:17.3186 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:29:17.5205 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:31:02.8877 Info Message Template Auto Format enabled
+2022-05-14 22:31:02.9589 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:31:03.0989 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:31:03.1590 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:31:03.1707 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:31:03.3195 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 22:32:48.9593 Info Message Template Auto Format enabled
+2022-05-14 22:32:49.0737 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 22:32:49.2883 Info Adding target FileTarget(Name=allfile)
+2022-05-14 22:32:49.3633 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 22:32:49.3633 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 22:32:49.5016 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:12:08.2951 Info Message Template Auto Format enabled
+2022-05-14 23:12:08.6401 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:12:08.9973 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:12:09.0171 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:12:09.0171 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:12:09.0851 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:16:11.4119 Info Message Template Auto Format enabled
+2022-05-14 23:16:11.5044 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:16:11.6525 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:16:11.7087 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:16:11.8183 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:16:11.9516 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:19:14.6279 Info Message Template Auto Format enabled
+2022-05-14 23:19:14.7239 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:19:14.8721 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:19:14.9293 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:19:14.9354 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:19:16.3718 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:21:25.4738 Info Message Template Auto Format enabled
+2022-05-14 23:21:25.5066 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:21:25.6760 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:21:25.7389 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:21:25.7389 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:21:25.8945 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:25:43.2776 Info Message Template Auto Format enabled
+2022-05-14 23:25:43.4436 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:25:43.5915 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:25:43.7581 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:25:43.7581 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:25:43.9198 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:27:35.2725 Info Message Template Auto Format enabled
+2022-05-14 23:27:35.4076 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:27:35.6421 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:27:35.7762 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:27:35.7816 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:27:35.9396 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-14 23:29:47.1969 Info Message Template Auto Format enabled
+2022-05-14 23:29:47.2957 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-14 23:29:47.4881 Info Adding target FileTarget(Name=allfile)
+2022-05-14 23:29:47.5926 Info Adding target FileTarget(Name=errowFile)
+2022-05-14 23:29:47.5926 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-14 23:29:47.7448 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:27:05.7854 Info Message Template Auto Format enabled
+2022-05-15 00:27:06.1472 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:27:06.2949 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:27:06.3397 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:27:06.3440 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:27:06.5177 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:29:02.0117 Info Message Template Auto Format enabled
+2022-05-15 00:29:02.1297 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:29:02.2949 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:29:02.3369 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:29:02.3429 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:29:02.4665 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:30:03.3946 Info Message Template Auto Format enabled
+2022-05-15 00:30:03.5009 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:30:03.6385 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:30:03.6949 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:30:03.6949 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:30:03.8311 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:31:16.5624 Info Message Template Auto Format enabled
+2022-05-15 00:31:16.6402 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:31:16.8004 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:31:16.8787 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:31:16.8787 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:31:16.9750 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:39:58.9531 Info Message Template Auto Format enabled
+2022-05-15 00:39:59.0879 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:39:59.2433 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:39:59.2757 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:39:59.2797 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:39:59.3761 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:41:23.6248 Info Message Template Auto Format enabled
+2022-05-15 00:41:23.6551 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:41:23.7584 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:41:23.7834 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:41:23.7834 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:41:23.8928 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 00:42:13.7694 Info Message Template Auto Format enabled
+2022-05-15 00:42:13.8327 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 00:42:14.0204 Info Adding target FileTarget(Name=allfile)
+2022-05-15 00:42:14.0812 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 00:42:14.0812 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 00:42:14.2556 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 18:26:35.6588 Info Message Template Auto Format enabled
+2022-05-15 18:26:37.0932 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 18:26:38.0688 Info Adding target FileTarget(Name=allfile)
+2022-05-15 18:26:38.9770 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 18:26:39.1565 Info Adding target FileTarget(Name=ownFile-web)
+2022-05-15 18:26:40.1861 Info Validating config: TargetNames=allfile, errowFile, ownFile-web, ConfigItems=67, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-15 18:39:16.8599 Info Message Template Auto Format enabled
+2022-05-15 18:39:17.3307 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-15 18:39:17.7585 Info Adding target FileTarget(Name=allfile)
+2022-05-15 18:39:17.9814 Info Adding target FileTarget(Name=errowFile)
+2022-05-15 18:39:18.5290 Info Validating config: TargetNames=allfile, errowFile, ConfigItems=43, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config

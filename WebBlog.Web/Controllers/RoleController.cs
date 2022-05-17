@@ -41,9 +41,13 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(RoleViewModel role)
         {
-            var r1 = _mapper.Map<Role>(role);
-            rs.AddRole(r1);
-            return RedirectToAction("Index", "Role");
+            if (ModelState.IsValid)
+            {
+                var r1 = _mapper.Map<Role>(role);
+                rs.AddRole(r1);
+                return RedirectToAction("Index", "Role");
+            }
+            else return View(role);
         }
 
         [HttpGet]
@@ -65,9 +69,13 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id,RoleViewModel role)
         {
-            var r1 = _mapper.Map<Role>(role);
-            rs.UpdateRole(id,r1);
-            return RedirectToAction("Index", "Role");
+            if (ModelState.IsValid)
+            {
+                var r1 = _mapper.Map<Role>(role);
+                rs.UpdateRole(id, r1);
+                return RedirectToAction("Index", "Role");
+            }
+            else return View(role);
            
         }
 

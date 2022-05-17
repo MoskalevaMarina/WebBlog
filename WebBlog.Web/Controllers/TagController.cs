@@ -27,7 +27,7 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
+           
             if (User.IsInRole("user"))
             {
 
@@ -44,6 +44,7 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult IndexUserTag(int id)
         {
+           
             var u1 = us.GetUser(id);
             var k = _mapper.Map<IEnumerable<TagViewModel>>(rs.GetTagbyUser(u1));
             return View(k);
@@ -59,15 +60,19 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(TagViewModel com)
         {
-            var r1 = _mapper.Map<Tag>(com);
-           
-            User user = us.GetUserbyEmail(User.Identity.Name);
+            if (ModelState.IsValid)
+            {
+                var r1 = _mapper.Map<Tag>(com);
 
-            r1.UserId = user.Id;
-            r1.User = user;
+                User user = us.GetUserbyEmail(User.Identity.Name);
 
-            rs.AddTag(r1);
-            return RedirectToAction("Index", "Tag");
+                r1.UserId = user.Id;
+                r1.User = user;
+
+                rs.AddTag(r1);
+                return RedirectToAction("Index", "Tag");
+            }
+            else return View(com);
         }
 
         [HttpGet]
@@ -89,9 +94,14 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, TagViewModel com)
         {
-            var r1 = _mapper.Map<Tag>(com);
-            rs.UpdateTag(id, r1);
-            return RedirectToAction("Index", "Tag");
+          //  Program.Logger.Info("Информационное сообщение edit tag");
+            if (ModelState.IsValid)
+            {
+                var r1 = _mapper.Map<Tag>(com);
+                rs.UpdateTag(id, r1);
+                return RedirectToAction("Index", "Tag");
+            }
+            else return View(com);
 
         }
 

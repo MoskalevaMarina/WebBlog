@@ -13,10 +13,18 @@ namespace WebBlog.Web.Models
         public int Id { get; set; }
 
         [Display(Name = "НикНейм")]
+        [Required(ErrorMessage = "Введите НикНейм ")]
         public string UserName { get; set; }
 
         [Display(Name = "Пароль")]
+        [Required(ErrorMessage = "Введите пароль")]
+        [MinLength(5,ErrorMessage ="Минимальная длинна пароля должна быть 5 символов")]
+        [MaxLength(15, ErrorMessage = "Максимальная длинна пароля может быть 15 символов")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Введите Email")]
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Display(Name = "Имя")]
@@ -35,6 +43,7 @@ namespace WebBlog.Web.Models
         public List<Post> Posts { get; set; }
         public List<Role> Roles { get; set; }
         public List<Role> sproles { get; set; }
+        public int[] Selectedrole { set; get; }
         //  public IEnumerable<User> Users { get; set; }
         //   public SelectList Roles { get; set; }
 

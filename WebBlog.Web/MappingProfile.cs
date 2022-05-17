@@ -17,6 +17,7 @@ namespace WebBlog.Web
             CreateMap<UserViewModel, User>().ReverseMap();
             CreateMap<CommentModel, Comment>().ReverseMap();
             CreateMap<PostsViewModel, Post>().ReverseMap();
+            CreateMap<PostEditViewModel, Post>().ReverseMap();
             CreateMap<TagViewModel, Tag>().ReverseMap();
 
         }

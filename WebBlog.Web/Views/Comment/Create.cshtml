@@ -9,6 +9,7 @@
         <div class="mb-3">
             <label asp-for="comment.TextComment" class="control-label">Текст</label>
             <textarea asp-for="comment.TextComment" class="form-control"> </textarea>
+            <span asp-validation-for="comment.TextComment"></span>
 
             <label class="control-label">Статья: </label>
             <select name="SelectedPost" asp-items="@Model.ListPosts" class="form-control"></select>

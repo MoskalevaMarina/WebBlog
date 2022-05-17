@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using WebBlog.BLL.Extentions;
 using WebBlog.BLL.Services;
@@ -16,6 +19,7 @@ using WebBlog.DAL.EF;
 using WebBlog.DAL.Entities;
 using WebBlog.DAL.Interfaces;
 using WebBlog.DAL.Repositories;
+
 
 namespace WebBlog.Web
 {
@@ -69,17 +73,23 @@ namespace WebBlog.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+           
+            app.UseExceptionHandler("/Home/Error");
+
             app.UseStaticFiles();
 
             app.UseRouting();
+            //Используем метод Use, чтобы запрос передавался дальше по конвейеру
+            app.Use(async (context, next) =>
+            {
+                // Строка для публикации в лог
+                string logMessage = $"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}{Environment.NewLine}";
+
+                Program.Logger.Info(logMessage);
+                //  Program.Logger.Error(logMessage);
+                await next.Invoke();
+            });
+
             app.UseAuthentication();
             app.UseAuthorization();
 

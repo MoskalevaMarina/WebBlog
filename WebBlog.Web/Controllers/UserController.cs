@@ -110,42 +110,46 @@ namespace WebBlog.Web.Controllers
         //sozdanie usera adminom
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(AddUserViewModel user, int[] Selectedrole, IFormFile upload)
+        public IActionResult Create(AddUserViewModel user,  IFormFile upload)
         {
-            string path;
-            if (upload != null)
+            if (ModelState.IsValid)
             {
-                // путь к папке Files
-                path = "/images/images_user/" + upload.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                string path;
+                if (upload != null)
                 {
-                    upload.CopyTo(fileStream);
+                    // путь к папке Files
+                    path = "/images/images_user/" + upload.FileName;
+                    // сохраняем файл в папку Files в каталоге wwwroot
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        upload.CopyTo(fileStream);
+                    }
                 }
-            }
-            else
-            {
-                path = "/images/images_user/avatar7.jpg";
-            }
-
-            user.Avatar = path;
-
-            var r1 = _mapper.Map<User>(user);
-            service.AddUser(r1);
-
-            int gg = service.GetUsers().Where(m => m.Email == r1.Email).LastOrDefault().Id;
-
-
-            if (Selectedrole.Length != 0)
-            {
-                foreach (var item in Selectedrole)
+                else
                 {
-                    service.AddRolebyUser(gg, item);
+                    path = "/images/images_user/avatar7.jpg";
                 }
-            }
-            service.UpdateUser(gg, r1);
 
-            return RedirectToAction("IndexAdmin", "User");
+                user.Avatar = path;
+
+                var r1 = _mapper.Map<User>(user);
+                service.AddUser(r1);
+
+                int gg = service.GetUsers().Where(m => m.Email == r1.Email).LastOrDefault().Id;
+
+
+                if (user.Selectedrole != null)
+                {
+                    foreach (var item in user.Selectedrole)
+                    {
+                        service.AddRolebyUser(gg, item);
+                    }
+                }
+                service.UpdateUser(gg, r1);
+
+                return RedirectToAction("IndexAdmin", "User");
+            }
+            else return View(user);
         }
 
 
@@ -168,40 +172,43 @@ namespace WebBlog.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(UserViewModel user, int[] Selectedrole, IFormFile upload)
+        public IActionResult Edit(UserViewModel user, IFormFile upload)
         {
-            string path;
-            if (upload != null)
+            if (ModelState.IsValid)
             {
-                // путь к папке Files
-                path = "/images/images_user/" + upload.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                string path;
+                if (upload != null)
                 {
-                    upload.CopyTo(fileStream);
+                    // путь к папке Files
+                    path = "/images/images_user/" + upload.FileName;
+                    // сохраняем файл в папку Files в каталоге wwwroot
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        upload.CopyTo(fileStream);
+                    }
+                    user.Avatar = path;
                 }
-                user.Avatar = path;
-            }
 
-            var r1 = _mapper.Map<User>(user);
-            r1.Avatar = user.Avatar;
-            if (Selectedrole.Length != 0)
-            {
-                foreach (var item in Selectedrole)
+                var r1 = _mapper.Map<User>(user);
+                r1.Avatar = user.Avatar;
+                if (user.Selectedrole != null)
                 {
-                    service.AddRolebyUser(user.Id, item);
+                    foreach (var item in user.Selectedrole)
+                    {
+                        service.AddRolebyUser(user.Id, item);
+                    }
+                }
+                service.UpdateUser(user.Id, r1);
+                if (User.IsInRole("admin"))
+                {
+                    return RedirectToAction("IndexAdmin", "User");
+                }
+                else
+                {
+                    return RedirectToAction("Profile1", "User");
                 }
             }
-            service.UpdateUser(user.Id, r1);
-            if (User.IsInRole("admin"))
-            {
-                return RedirectToAction("IndexAdmin", "User");
-            }
-            else
-            {
-                return RedirectToAction("Profile1", "User");
-            }
-
+            else return View(user);
 
         }
 

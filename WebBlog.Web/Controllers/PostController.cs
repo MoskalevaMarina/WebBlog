@@ -63,59 +63,62 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            PostCreateViewModel pm = new PostCreateViewModel();
+            PostsViewModel pm = new PostsViewModel();
             pm.ListTags = ts.GetTagSelectl();
-        
+
             return View(pm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PostsViewModel post, int[] SelectedTags, IFormFile upload)
+        public IActionResult Create(PostsViewModel post, IFormFile upload)
         {
-            string path;
-            if (upload != null)
+            if (ModelState.IsValid)
             {
-                // путь к папке Files
-                path = "/images/images_post/" + upload.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                string path;
+                if (upload != null)
                 {
-                    upload.CopyTo(fileStream);
+                    // путь к папке Files
+                    path = "/images/images_post/" + upload.FileName;
+                    // сохраняем файл в папку Files в каталоге wwwroot
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        upload.CopyTo(fileStream);
+                    }
                 }
+                else
+                {
+                    path = "/images/images_post/article2.jpg";
+                }
+
+                post.Image = path;
+                var pp = us.GetUserbyEmail(User.Identity.Name);
+                post.UserId = pp.Id;
+
+                post.CreateTime = DateTime.Today.ToLongDateString();
+                var r1 = _mapper.Map<Post>(post);
+
+                //  r1.UserId = iduser;
+                r1.User = us.GetUser(r1.UserId);
+
+                rs.AddPost(r1);
+
+                int gg = rs.GetPosts().Where(m => m.Title == r1.Title).LastOrDefault().Id;
+
+
+                if (post.SelectedTags != null)
+                {
+                    rs.AddPostSelecttag(post.SelectedTags, gg);
+                }
+                rs.UpdatePost(gg, r1);
+
+                return RedirectToAction("IndexUserPost", "Post");
+
             }
-            else
-            {
-                path = "/images/images_post/article2.jpg";
-            }
-
-            post.Image = path;
-            var pp = us.GetUserbyEmail(User.Identity.Name);
-            post.UserId = pp.Id;
-
-            post.CreateTime = DateTime.Today.ToLongDateString();
-            var r1 = _mapper.Map<Post>(post);
-
-          //  r1.UserId = iduser;
-            r1.User = us.GetUser(r1.UserId );
-
-            rs.AddPost(r1);
-
-            int gg = rs.GetPosts().Where(m=>m.Title==r1.Title).LastOrDefault().Id;
-
-
-            if (SelectedTags.Length != 0)
-            {
-                rs.AddPostSelecttag(SelectedTags, gg);
-            }
-            rs.UpdatePost(gg, r1);
-            //  rs.UpdatePost(r1.Id, r1);
-            // rs.AddComment(r1);*/
-            return RedirectToAction("IndexUserPost", "Post");
-            //Content($"{SelectedTags[0]}   {SelectedTags[1]}  {r1.Tags.Count()}"); //
+            else return View(post);
         }
 
-       
+
         public IActionResult Details(int id)
         {
             if (id != 0)
@@ -139,10 +142,13 @@ namespace WebBlog.Web.Controllers
                 Post post = rs.GetPost(id);
                 if (post != null)
                 {
-                    PostEditViewModel pm = new PostEditViewModel();
-                    pm.post = post;
-                    pm.ListTagsAdd = ts.GetTagSelectl(pm.post.Tags);
+                    var pm = _mapper.Map<PostEditViewModel>(post);
+                    //  PostEditViewModel pm = new PostEditViewModel();
+                    //    pm.post = post;
+                    pm.ListTagsAdd = ts.GetTagSelectl(pm.Tags);
                     pm.ListTagsDel = ts.GetTagSelectl(post);
+                    pm.SelectedTagsAdd = new int[pm.ListTagsAdd.Count()];
+                    pm.SelectedTagsDel = new int[pm.ListTagsDel.Count()];
                     return View(pm);
                 }
             }
@@ -151,49 +157,54 @@ namespace WebBlog.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, PostEditViewModel com, int[] SelectedTagsAdd, int[] SelectedTagsDel, IFormFile upload)
+        public IActionResult Edit(PostEditViewModel com, IFormFile upload)
         {
-            if (id != 0)
+            if (ModelState.IsValid)
             {
-                Post post = rs.GetPost(id);
-
-
-                if (post != null)
+                if (com.Id != 0)
                 {
-                    string path;
-                    if (upload != null)
+                    Post post = rs.GetPost(com.Id);
+
+
+                    if (post != null)
                     {
-                        // путь к папке Files
-                        path = "/images/images_post/" + upload.FileName;
-                        // сохраняем файл в папку Files в каталоге wwwroot
-                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                        string path;
+                        if (upload != null)
                         {
-                            upload.CopyTo(fileStream);
+                            // путь к папке Files
+                            path = "/images/images_post/" + upload.FileName;
+                            // сохраняем файл в папку Files в каталоге wwwroot
+                            using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                            {
+                                upload.CopyTo(fileStream);
+                            }
                         }
-                    }
-                    else
-                    {
-                        path = "/images/images_post/article2.jpg";
-                    }
+                        else
+                        {
+                            path = "/images/images_post/article2.jpg";
+                        }
 
 
-                    var r1 = _mapper.Map<Post>(com.post);
-                    r1.Image = path;
+                        var r1 = _mapper.Map<Post>(com);
+                        r1.Image = path;
 
-                    if (SelectedTagsAdd.Length != 0)
-                    {
-                        rs.AddPostSelecttag(SelectedTagsAdd, post.Id);
-                    }
+                        if (com.SelectedTagsAdd != null)
+                        {
+                            rs.AddPostSelecttag(com.SelectedTagsAdd, post.Id);
+                        }
 
-                    if (SelectedTagsDel.Length != 0)
-                    {
-                        rs.DeletePostSelecttag(SelectedTagsDel, post.Id);
+                        if (com.SelectedTagsDel != null)
+                        {
+                            rs.DeletePostSelecttag(com.SelectedTagsDel, post.Id);
+                        }
+
+                        rs.UpdatePost(com.Id, r1);
                     }
-                    rs.UpdatePost(id, r1);
                 }
-            }
 
-            return RedirectToAction("IndexUserPost", "Post");
+                return RedirectToAction("IndexUserPost", "Post");
+            }
+            else return View(com);
 
         }
 

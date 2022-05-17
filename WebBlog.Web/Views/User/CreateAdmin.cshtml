@@ -21,7 +21,7 @@
                     }
                     else
                     {
-                        <input type="checkbox" id=@item.Id name="Selectedrole" value=@item.Id>
+                        <input type="checkbox" id=@item.Id name="@Model.Selectedrole" value=@item.Id>
                         <label for=@item.Id> @item.Name </label>
                     }
                 }
@@ -29,18 +29,28 @@
 
             <label asp-for="UserName" class="form-label">НикНейм</label>
             <input type="text" class="form-control" asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+
             <label asp-for="Password" class="form-label">Пароль</label>
             <input type="password" class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+
             <label asp-for="Email" class="form-label">Email</label>
             <input type="email" class="form-control" asp-for="Email" placeholder="UserName@gmail.com" />
+            <span asp-validation-for="Email"></span>
+
             <label asp-for="FirstName" class="form-label">Имя</label>
             <input type="text" class="form-control" asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+
             <label asp-for="LastName" class="form-label">Фамилия</label>
             <input type="text" class="form-control" asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
 
             <div class="form-group">
                 <label asp-for="Avatar" class="form-label">Аватар</label>
                 <input type="file" name="upload" class="form-control" />
+                <span asp-validation-for="Avatar"></span>
             </div>
         </div>
 

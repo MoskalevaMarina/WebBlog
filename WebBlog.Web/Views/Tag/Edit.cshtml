@@ -9,9 +9,10 @@
     <p> </p>
     <form class="frm" method="post" asp-controller="Tag" asp-action="Edit">
 
-        <div >
+        <div>
             <label asp-for="Name" class="form-label">Название</label>
             <input type="text" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
         </div>
 
 

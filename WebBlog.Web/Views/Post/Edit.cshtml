@@ -7,14 +7,20 @@
     <form method="post" asp-controller="Post" asp-action="Edit" enctype="multipart/form-data">
 
         <div class="mb-3">
-            <label asp-for="post.Title" class="control-label">Название статьи</label>
-            <input type="text" asp-for="post.Title" class="form-control" />
+        
+            <input asp-for="Id" type="hidden" />
 
-            <label asp-for="post.Annotation" class="control-label">Аннотация</label>
-            <input type="text" asp-for="post.Annotation" class="form-control" />
+            <label asp-for="Title" class="control-label">Название статьи</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title"></span>
 
-            <label asp-for="post.PostText" class="control-label">Текст</label>
-            <input type="text" asp-for="post.PostText" class="form-control" />
+            <label asp-for="Annotation" class="control-label">Аннотация</label>
+            <input type="text" asp-for="Annotation" class="form-control" />
+            <span asp-validation-for="Annotation"></span>
+
+            <label asp-for="PostText" class="control-label">Текст</label>
+            <input type="text" asp-for="PostText" class="form-control" />
+            <span asp-validation-for="PostText"></span>
 
             <div>
 

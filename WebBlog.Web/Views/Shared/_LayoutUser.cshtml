@@ -10,54 +10,54 @@
 </head>
 <body>
 
-  
-        <nav class="navbar navbar-expand-lg  navbar-dark  justify-content-between" style="background-color:#2a2922; color:white">
-            <div class="container">
-                <a href="" class="navbar-brand"> Блог </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                        aria-controls="navbarContent" aria-expanded="false">
 
-                    <span class="navbar-toggler-icon"> </span>
-                </button>
-               
-                <div class="collapse navbar-collapse" id="navbarContent">
+    <nav class="navbar navbar-expand-lg  navbar-dark  justify-content-between" style="background-color:#2a2922; color:white">
+        <div class="container">
+            <a href="" class="navbar-brand"> Блог </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false">
 
-                    <ul class=" nav navbar-nav mr-auto mb-3">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
 
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Post" asp-action="Index">Все статьи</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Post" asp-action="IndexUserPost">Мои статьи</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Profile1">Мой профиль</a>
-                        </li>
+            <div class="collapse navbar-collapse" id="navbarContent">
 
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Tag" asp-action="Index">Мои тэги</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Comment" asp-action="IndexUserComment">Мои комментарии</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        
-                        <li class="navbar-text align-content-end">
-                            @User.Identity.Name
-                        </li>
-                        <li class="nav-item ">
+                <ul class=" nav navbar-nav mr-auto mb-3">
 
-                            <a class="btn text-white" asp-controller="User" asp-action="Logout">Выход</a>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="Post" asp-action="Index">Все статьи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="Post" asp-action="IndexUserPost">Мои статьи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Profile1">Мой профиль</a>
+                    </li>
 
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="Tag" asp-action="Index">Мои тэги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-area="" asp-controller="Comment" asp-action="IndexUserComment">Мои комментарии</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
 
-                    </ul>
-                </div>
-                    </div>
-            
-        </nav>
-   
+                    <li class="navbar-text align-content-end">
+                        @User.Identity.Name
+                    </li>
+                    <li class="nav-item ">
+
+                        <a class="btn text-white" asp-controller="User" asp-action="Logout">Выход</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -67,12 +67,14 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Разработка персонального блога 
+            &copy; 2022 - Разработка персонального блога
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

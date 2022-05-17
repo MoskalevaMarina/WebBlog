@@ -64,35 +64,51 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(EditCommentModel com1, int SelectedPost)
         {
-            User user = us.GetUserbyEmail(User.Identity.Name);
+            if (ModelState.IsValid)
+            {
+                User user = us.GetUserbyEmail(User.Identity.Name);
 
-            Comment com = com1.comment;
-            com.UserId = user.Id;
-            com.User = us.GetUser(user.Id);
-            com.PostId = SelectedPost;
-            com.Post = postService.GetPost(SelectedPost);
-            com.DataComment = DateTime.Today.ToLongDateString();
+                Comment com = com1.comment;
+                com.UserId = user.Id;
+                com.User = us.GetUser(user.Id);
+                com.PostId = SelectedPost;
+                com.Post = postService.GetPost(SelectedPost);
+                com.DataComment = DateTime.Today.ToLongDateString();
 
-            rs.AddComment(com);
-            return RedirectToAction("Index", "Comment");
+                rs.AddComment(com);
+                return RedirectToAction("Index", "Comment");
+            }
+            else return View(com1);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create1(PostsViewModel pm, int idPost)
         {
-            User user = us.GetUserbyEmail(User.Identity.Name);
+            //   if (ModelState.IsValid)
+            //   {
+            if (pm.NewComment == null)
+            {
+                return RedirectToAction("Details", "Post", new { id = idPost });
+            }
+            else
+            {
+                User user = us.GetUserbyEmail(User.Identity.Name);
 
-            Comment com = new Comment();
-            com.TextComment = pm.NewComment;
-            com.UserId = user.Id;
-            com.User = user;
-            com.PostId = idPost;
-            com.Post = postService.GetPost(idPost);
-            com.DataComment = DateTime.Today.ToLongDateString();
+                Comment com = new Comment();
+                com.TextComment = pm.NewComment;
+                com.UserId = user.Id;
+                com.User = user;
+                com.PostId = idPost;
+                com.Post = postService.GetPost(idPost);
+                com.DataComment = DateTime.Today.ToLongDateString();
 
-            rs.AddComment(com);
-            return RedirectToAction("Details", "Post", new { id = idPost });
+                rs.AddComment(com);
+
+                return RedirectToAction("Details", "Post", new { id = idPost });
+            }
+            // }
+            // else return RedirectToAction("Details", "Post", new { id = idPost });
         }
 
         [HttpGet]
@@ -114,16 +130,21 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, CommentModel com)
         {
-            var r1 = _mapper.Map<Comment>(com);
-            rs.UpdateComment(id, r1);
-            if (User.IsInRole("admin"))
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Comment");
+                var r1 = _mapper.Map<Comment>(com);
+                rs.UpdateComment(id, r1);
+                if (User.IsInRole("admin"))
+                {
+                    return RedirectToAction("Index", "Comment");
+                }
+                else
+                {
+                    return RedirectToAction("IndexUserComment", "Comment");
+                }
             }
             else
-            {
-                return RedirectToAction("IndexUserComment", "Comment");
-            }
+                return View(com);
 
         }
 
@@ -144,7 +165,7 @@ namespace WebBlog.Web.Controllers
                     {
                         return RedirectToAction("IndexUserComment", "Comment");
                     }
-                  
+
                 }
             }
             return NotFound();
