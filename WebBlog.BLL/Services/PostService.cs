@@ -13,14 +13,10 @@ namespace WebBlog.BLL.Services
     public class PostService
     {
         private IUnitOfWork dbb;
-        //   IUnitOfWork dbb;
-        //   RoleRepository repository;// = dbb.GetRepository<Role>() as RoleRepository;
 
         public PostService(IUnitOfWork unitOfWork)
         {
             dbb = unitOfWork;
-            //   repository = dbb.GetRepository<Role>() as RoleRepository;
-
         }
 
         public IEnumerable<Post> gg()
@@ -35,7 +31,6 @@ namespace WebBlog.BLL.Services
             return j.GetAllPosts();
         }
 
-        
         public IEnumerable<Post> GetPosrsbyTag(int idtag)
         {
             var k = dbb.GetRepository<Tag>() as TagRepository;
@@ -59,7 +54,7 @@ namespace WebBlog.BLL.Services
             var j = dbb.GetRepository<Post>() as PostRepository;
             var j1 = j.GetPostbyid(idpost);
 
-           for (int i=0; i<sl.Count(); i++)
+            for (int i = 0; i < sl.Count(); i++)
             {
                 var p = k.Get(sl[i]);
                 j.Addtaginpost(p, j1);
@@ -82,9 +77,6 @@ namespace WebBlog.BLL.Services
         public void AddPost(Post item)
         {
             item.CreateTime = DateTime.Today.ToLongDateString();
-
-
-
             dbb.GetRepository<Post>().Create(item);
         }
 
@@ -94,25 +86,19 @@ namespace WebBlog.BLL.Services
             if (r1 != null)
             {
                 r1.Annotation = item.Annotation;
-                  r1.Image = item.Image;
+                r1.Image = item.Image;
                 r1.PostText = item.PostText;
                 r1.Title = item.Title;
-               // r1.Tags = item.Tags;
-                //  r1.IsConfirmed = r1.IsConfirmed;
-                  r1.UpdateTime = DateTime.Today.ToLongDateString();
-
-
+                r1.Tags = item.Tags;
+                r1.UpdateTime = DateTime.Today.ToLongDateString();
             }
             dbb.GetRepository<Post>().Update(r1);
         }
-
-
 
         public void DeletePost(Post item)
         {
             dbb.GetRepository<Post>().Delete(item);
         }
-
 
         public Post GetPost(int id)
         {
@@ -133,11 +119,9 @@ namespace WebBlog.BLL.Services
             return r.GetPostbyTitle(title);
         }
 
-
         public void Dispose()
         {
             dbb.Dispose();
         }
-
     }
 }

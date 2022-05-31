@@ -14,7 +14,6 @@ namespace WebBlog.BLL.Extentions
         public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             return services;
         }
 
@@ -23,7 +22,6 @@ namespace WebBlog.BLL.Extentions
                  where IRepository : class, IRepository<TEntity>
         {
             services.AddScoped<IRepository<TEntity>, IRepository>();
-
             return services;
         }
 

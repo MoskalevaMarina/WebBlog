@@ -12,7 +12,7 @@ namespace WebBlog.Web.Controllers
 {
     public class CommentController : Controller
     {
-        public CommentService rs;
+        private CommentService rs;
         private IMapper _mapper;
         private PostService postService;
         private UserService us;
@@ -28,7 +28,6 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
             var sp = rs.GetComments();
             var cm = _mapper.Map<IEnumerable<CommentModel>>(sp);
             return View("Index", cm);
@@ -39,7 +38,6 @@ namespace WebBlog.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 User user = us.GetUserbyEmail(User.Identity.Name);
                 if (user != null)
                 {
@@ -67,14 +65,11 @@ namespace WebBlog.Web.Controllers
             if (ModelState.IsValid)
             {
                 User user = us.GetUserbyEmail(User.Identity.Name);
-
                 Comment com = com1.comment;
                 com.UserId = user.Id;
                 com.User = us.GetUser(user.Id);
                 com.PostId = SelectedPost;
                 com.Post = postService.GetPost(SelectedPost);
-                com.DataComment = DateTime.Today.ToLongDateString();
-
                 rs.AddComment(com);
                 return RedirectToAction("Index", "Comment");
             }
@@ -85,8 +80,6 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create1(PostsViewModel pm, int idPost)
         {
-            //   if (ModelState.IsValid)
-            //   {
             if (pm.NewComment == null)
             {
                 return RedirectToAction("Details", "Post", new { id = idPost });
@@ -101,14 +94,10 @@ namespace WebBlog.Web.Controllers
                 com.User = user;
                 com.PostId = idPost;
                 com.Post = postService.GetPost(idPost);
-                com.DataComment = DateTime.Today.ToLongDateString();
-
                 rs.AddComment(com);
 
                 return RedirectToAction("Details", "Post", new { id = idPost });
             }
-            // }
-            // else return RedirectToAction("Details", "Post", new { id = idPost });
         }
 
         [HttpGet]
@@ -145,7 +134,6 @@ namespace WebBlog.Web.Controllers
             }
             else
                 return View(com);
-
         }
 
         [HttpPost]
@@ -165,7 +153,6 @@ namespace WebBlog.Web.Controllers
                     {
                         return RedirectToAction("IndexUserComment", "Comment");
                     }
-
                 }
             }
             return NotFound();

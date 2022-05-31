@@ -11,14 +11,6 @@ namespace WebBlog.DAL.Interfaces
     {
         int SaveChanges(bool ensureAutoHistory = false);
 
-        IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = true) where TEntity : class;
-
-      //  IRepository<Role> Roles { get; }
-      //  IRepository<Tag> Tags { get; }
-      //  void Save();
-        //  int SaveChanges(bool ensureAutoHistory = false);
-
-        //    IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = true) where TEntity : class;
+        IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = true) where TEntity : class;    
     }
-
 }

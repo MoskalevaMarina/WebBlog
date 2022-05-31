@@ -11,7 +11,7 @@ using WebBlog.DAL.Repositories;
 
 namespace WebBlog.BLL.Services
 {
-   public class CommentService
+    public class CommentService
     {
         private IUnitOfWork dbb;
 
@@ -29,9 +29,8 @@ namespace WebBlog.BLL.Services
         public IEnumerable<Comment> GetCommentsbyUser(int iduser)
         {
             var l = dbb.GetRepository<User>() as UserRepository;
-            var us1 = l.GetUser(iduser);  
+            var us1 = l.GetUser(iduser);
             var k = dbb.GetRepository<Comment>() as CommentRepository;
-
             return k.GetbyUser(us1);
         }
 
@@ -40,29 +39,23 @@ namespace WebBlog.BLL.Services
             var l = dbb.GetRepository<Post>() as PostRepository;
             var post1 = l.Get(idpost);
             var k = dbb.GetRepository<Comment>() as CommentRepository;
-
             return k.GetbyPost(post1);
         }
 
 
         public void AddComment(Comment comment)
         {
+            comment.DataComment = DateTime.Today.ToLongDateString();
             dbb.GetRepository<Comment>().Create(comment);
         }
 
         public void UpdateComment(int id1, Comment comment)
         {
             var r2 = dbb.GetRepository<Comment>() as CommentRepository;
-               
-            var r1= r2.GetComment(id1);
+            var r1 = r2.GetComment(id1);
             if (r1 != null)
             {
                 r1.TextComment = comment.TextComment;
-                //  r1.Post = comment.Post;
-                //   r1.PostId = comment.PostId;
-                r1.DataComment = DateTime.Today.ToLongDateString();
-
-
             }
             dbb.GetRepository<Comment>().Update(r1);
         }
@@ -74,9 +67,7 @@ namespace WebBlog.BLL.Services
         public Comment GetComment(int id)
         {
             var r2 = dbb.GetRepository<Comment>() as CommentRepository;
-
             var r1 = r2.GetComment(id);
-
             return r1;
         }
 

@@ -251,3 +251,8 @@
 2022-05-15 18:39:17.7585 Info Adding target FileTarget(Name=allfile)
 2022-05-15 18:39:17.9814 Info Adding target FileTarget(Name=errowFile)
 2022-05-15 18:39:18.5290 Info Validating config: TargetNames=allfile, errowFile, ConfigItems=43, FilePath=D:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config
+2022-05-31 23:33:08.1868 Info Message Template Auto Format enabled
+2022-05-31 23:33:08.2363 Info Loading assembly: NLog.Web.AspNetCore
+2022-05-31 23:33:08.3706 Info Adding target FileTarget(Name=allfile)
+2022-05-31 23:33:08.4033 Info Adding target FileTarget(Name=errowFile)
+2022-05-31 23:33:08.5074 Info Validating config: TargetNames=allfile, errowFile, ConfigItems=43, FilePath=d:\kursi\blog4\blog3\WebBlog\WebBlog.Web\bin\Debug\net5.0\nlog.config

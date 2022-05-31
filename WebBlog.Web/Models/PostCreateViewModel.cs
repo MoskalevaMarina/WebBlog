@@ -16,7 +16,6 @@ namespace WebBlog.Web.Models
         public PostCreateViewModel()
         {
             post = new Post();
-        }
-        
+        }        
     }
 }

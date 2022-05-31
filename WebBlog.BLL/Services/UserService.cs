@@ -12,16 +12,10 @@ namespace WebBlog.BLL.Services
     public class UserService
     {
         private IUnitOfWork dbb;
-        //   IUnitOfWork dbb;
-        //   RoleRepository repository;// = dbb.GetRepository<Role>() as RoleRepository;
-
         public UserService(IUnitOfWork unitOfWork)
         {
             dbb = unitOfWork;
-            //   repository = dbb.GetRepository<Role>() as RoleRepository;
-
         }
-
 
         public IEnumerable<User> GetUsers()
         {
@@ -33,7 +27,7 @@ namespace WebBlog.BLL.Services
         {
             var k = dbb.GetRepository<Role>() as RoleRepository;
             var p = k.GetRole(idrole);
-            var j= dbb.GetRepository<User>() as UserRepository;
+            var j = dbb.GetRepository<User>() as UserRepository;
             return j.Getbyrole(p);
         }
 
@@ -57,12 +51,9 @@ namespace WebBlog.BLL.Services
         {
             item.IsConfirmed = 0;
             item.DataCreate = DateTime.Today.ToLongDateString();
-          
             var k = dbb.GetRepository<Role>() as RoleRepository;
             var j = k.GetbyName("user");
-
             item.Roles.Add(j);
-
             dbb.GetRepository<User>().Create(item);
         }
 
@@ -76,21 +67,15 @@ namespace WebBlog.BLL.Services
                 r1.FirstName = item.FirstName;
                 r1.Email = item.Email;
                 r1.Avatar = item.Avatar;
-                //  r1.IsConfirmed = r1.IsConfirmed;
                 r1.Password = item.Password;
-
-
             }
             dbb.GetRepository<User>().Update(r1);
         }
-
-
 
         public void DeleteUser(User item)
         {
             dbb.GetRepository<User>().Delete(item);
         }
-       
 
         public User GetUser(int id)
         {
@@ -100,17 +85,16 @@ namespace WebBlog.BLL.Services
 
         public User GetUserbyEmail(string email)
         {
-          var r =  dbb.GetRepository<User>() as UserRepository;
+            var r = dbb.GetRepository<User>() as UserRepository;
             return r.GetbyEmail(email);
         }
 
         public User GetUserbyEmailandPassword(string email, string password)
         {
             var r = dbb.GetRepository<User>() as UserRepository;
-            return r.Get(email,password);
+            return r.Get(email, password);
         }
 
-       
         public void Dispose()
         {
             dbb.Dispose();

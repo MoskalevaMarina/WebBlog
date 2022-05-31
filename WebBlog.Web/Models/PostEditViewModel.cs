@@ -10,7 +10,6 @@ namespace WebBlog.Web.Models
 {
     public class PostEditViewModel
     {
-        // public Post post { get; set; }
         public int Id { get; set; }
 
         [Display(Name = "Название статьи")]
@@ -29,10 +28,8 @@ namespace WebBlog.Web.Models
 
         [Display(Name = "Картинка для статьи")]
         public string Image { get; set; }
-
         public int UserId { get; set; }
         public User User { get; set; }
-
         public List<Tag> Tags { get; set; }
         public List<Comment> Comments { get; set; }
         public IEnumerable<SelectListItem> ListTagsAdd { get; set; }
@@ -40,7 +37,5 @@ namespace WebBlog.Web.Models
 
         public IEnumerable<SelectListItem> ListTagsDel { get; set; }
         public int[] SelectedTagsDel { set; get; }
-
-
     }
 }

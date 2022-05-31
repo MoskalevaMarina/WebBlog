@@ -11,7 +11,6 @@ namespace WebBlog.Web.Models
     {
         public Comment comment { get; set; }
         public IEnumerable<SelectListItem> ListPosts { get; set; }
-        public int SelectedPost { set; get; }
-       
+        public int SelectedPost { set; get; }       
     }
 }

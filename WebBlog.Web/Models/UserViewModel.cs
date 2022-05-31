@@ -37,22 +37,11 @@ namespace WebBlog.Web.Models
         public int IsConfirmed { get; set; }
         [Display(Name = "Дата регистрации")]
         public string DataCreate { get; set; }
-
         public List<Tag> Tags { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Post> Posts { get; set; }
         public List<Role> Roles { get; set; }
         public List<Role> sproles { get; set; }
-        public int[] Selectedrole { set; get; }
-        //  public IEnumerable<User> Users { get; set; }
-        //   public SelectList Roles { get; set; }
-
-        /*   public UserViewModel()
-           {
-               Tags = new List<Tag>();
-               Comments = new List<Comment>();
-               Posts = new List<Post>();
-               Roles = new List<Role>();
-           }*/
+        public int[] Selectedrole { set; get; }      
     }
 }

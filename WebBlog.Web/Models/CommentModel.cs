@@ -15,8 +15,6 @@ namespace WebBlog.Web.Models
         [Required(ErrorMessage = "Вы ничего не написали")]
         public string TextComment { get; set; }
         public string DataComment { get; set; }
-
-
         public int? UserId { get; set; }
         public User User { get; set; }
         public int? PostId { get; set; }

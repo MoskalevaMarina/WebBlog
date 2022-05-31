@@ -20,30 +20,30 @@ namespace WebBlog.DAL.Repositories
             return Set.Include(m => m.Posts).Include(m => m.Roles).Include(m => m.Tags).Include(m => m.Comments).FirstOrDefault(m => m.Id == id);
         }
 
-       
+
         public int GetIdUser(string email)
         {
             return Set.Include(m => m.Comments).Where(m => m.Email == email).FirstOrDefault().Id;
         }
+
         public IEnumerable<User> Find(Func<User, Boolean> predicate)
         {
             var rol = Set.AsEnumerable().Where(predicate).ToList();
             return rol;
         }
 
-        public  IEnumerable<User> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
-            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Comments).Include(m=>m.Tags).AsEnumerable();
+            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Comments).Include(m => m.Tags).AsEnumerable();
             return rl;
         }
 
         public IEnumerable<User> Getbyrole(Role role)
         {
-            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m=>m.Comments).Where(m => m.Roles.Contains(role)).AsEnumerable();
+            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Comments).Where(m => m.Roles.Contains(role)).AsEnumerable();
             return rl;
         }
 
-        //1111111111111111
         public User DeletebyroleUser(int iduser, Role role)
         {
             var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Tags).Include(m => m.Comments).Where(m => m.Id == iduser).FirstOrDefault();
@@ -58,14 +58,12 @@ namespace WebBlog.DAL.Repositories
             {
                 rl.Roles.Add(role);
             }
-
-            //  var rl = Set.Include(m => m.Roles).Where(m => m.Roles.RemoveAt().Contains(role)).AsEnumerable();
             return rl;
         }
 
         public User Get(string name)
         {
-            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Tags).Include(m=>m.Comments).Where(m => m.UserName == name).FirstOrDefault();
+            var rl = Set.Include(m => m.Roles).Include(m => m.Posts).Include(m => m.Tags).Include(m => m.Comments).Where(m => m.UserName == name).FirstOrDefault();
             return rl;
         }
 

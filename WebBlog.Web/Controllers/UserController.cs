@@ -20,8 +20,8 @@ namespace WebBlog.Web.Controllers
 {
     public class UserController : Controller
     {
-        public UserService service;
-        public RoleService roleService;
+        private UserService service;
+        private RoleService roleService;
         private IMapper _mapper;
         IWebHostEnvironment _appEnvironment;
 
@@ -33,13 +33,9 @@ namespace WebBlog.Web.Controllers
             _appEnvironment = _appEnvironment1;
         }
 
-        //  [Route("")]
-        // [Authorize(Roles = "admin, user")]
-        public IActionResult Index()
+       public IActionResult Index()
         {
-
             return View("IndexUser");
-
         }
 
 
@@ -61,7 +57,6 @@ namespace WebBlog.Web.Controllers
                 }
             }
             return NotFound();
-
         }
 
         [HttpPost]
@@ -77,7 +72,6 @@ namespace WebBlog.Web.Controllers
                 }
             }
             return NotFound();
-
         }
 
 
@@ -85,15 +79,12 @@ namespace WebBlog.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 User user = service.GetUserbyEmail(User.Identity.Name);
                 if (user != null)
                 {
                     var r1 = _mapper.Map<UserViewModel>(user);
                     return View("Profile", r1);
                 }
-
-
             }
             return NotFound();
         }
@@ -131,12 +122,9 @@ namespace WebBlog.Web.Controllers
                 }
 
                 user.Avatar = path;
-
                 var r1 = _mapper.Map<User>(user);
                 service.AddUser(r1);
-
                 int gg = service.GetUsers().Where(m => m.Email == r1.Email).LastOrDefault().Id;
-
 
                 if (user.Selectedrole != null)
                 {
@@ -146,13 +134,10 @@ namespace WebBlog.Web.Controllers
                     }
                 }
                 service.UpdateUser(gg, r1);
-
                 return RedirectToAction("IndexAdmin", "User");
             }
             else return View(user);
         }
-
-
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -241,15 +226,12 @@ namespace WebBlog.Web.Controllers
                 User user = service.GetUserbyEmail(model.Email);
                 if (user == null)
                 {
-                    // добавляем пользователя в бд
                     user = new User { Email = model.Email, Password = model.Password };
                     user.Avatar = "/images/images_user/avatar7.jpg";
                     user.FirstName = "Неизвестный";
                     user.LastName = "Неизвестный";
                     service.AddUser(user);
-
                     Authenticate(user); // аутентификация
-
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -257,11 +239,13 @@ namespace WebBlog.Web.Controllers
             }
             return View(model);
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginModel model)
@@ -272,7 +256,6 @@ namespace WebBlog.Web.Controllers
                 if (user != null)
                 {
                     Authenticate(user); // аутентификация
-
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -280,8 +263,7 @@ namespace WebBlog.Web.Controllers
             return View(model);
         }
         private void Authenticate(User user)
-        {
-            // создаем один claim
+        {           
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),

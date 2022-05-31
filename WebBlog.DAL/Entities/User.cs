@@ -28,13 +28,12 @@ namespace WebBlog.DAL.Entities
         public int IsConfirmed { get; set; }
         [Display(Name = "Дата регистрации")]
         public string DataCreate { get; set; }
-
         public List<Tag> Tags { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Post> Posts { get; set; }
         public List<Role> Roles { get; set; }
 
-       public User()
+        public User()
         {
             Tags = new List<Tag>();
             Comments = new List<Comment>();

@@ -59,9 +59,7 @@ namespace WebBlog.BLL.Services
             var r1 = dbb.GetRepository<Tag>().Get(id1);
             if (r1 != null)
             {
-                r1.Name = tag.Name;
-              //  r1.Posts = tag.Posts;
-
+                r1.Name = tag.Name;  
             }
             dbb.GetRepository<Tag>().Update(r1);
         }
@@ -79,12 +77,22 @@ namespace WebBlog.BLL.Services
             return y.GetTag(id);
         }
 
+        public Tag GetTag(string name)
+        { 
+           var y = dbb.GetRepository<Tag>() as TagRepository;
+            return y.GetTag(name);
+        }
+
         public IEnumerable<Tag> GetTagbyUser(User user)
         {
-
-           // var u = dbb.GetRepository<User>() as UserRepository;
             var y = dbb.GetRepository<Tag>() as TagRepository;
             return y.GetbyUser(user.Id);
+        }
+
+        public IEnumerable<Tag> GetTagbyPost(Post post)
+        {
+            var y = dbb.GetRepository<Tag>() as TagRepository;
+            return y.GetbyPost(post);
         }
 
         public void Dispose()

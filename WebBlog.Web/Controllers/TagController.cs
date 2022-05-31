@@ -13,7 +13,7 @@ namespace WebBlog.Web.Controllers
 {
     public class TagController : Controller
     {
-        public TagService rs;
+        private TagService rs;
         private IMapper _mapper;
         private UserService us;
 
@@ -27,24 +27,19 @@ namespace WebBlog.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-           
             if (User.IsInRole("user"))
             {
-
                 User user = us.GetUserbyEmail(User.Identity.Name);
                 RedirectToAction("IndexUserTag", user.Id);
             }
             var sp = rs.GetTagAlll();
-
             var k = _mapper.Map<IEnumerable<TagViewModel>>(sp);
             return View(k);
-
         }
 
         [HttpGet]
         public IActionResult IndexUserTag(int id)
         {
-           
             var u1 = us.GetUser(id);
             var k = _mapper.Map<IEnumerable<TagViewModel>>(rs.GetTagbyUser(u1));
             return View(k);
@@ -63,12 +58,9 @@ namespace WebBlog.Web.Controllers
             if (ModelState.IsValid)
             {
                 var r1 = _mapper.Map<Tag>(com);
-
                 User user = us.GetUserbyEmail(User.Identity.Name);
-
                 r1.UserId = user.Id;
                 r1.User = user;
-
                 rs.AddTag(r1);
                 return RedirectToAction("Index", "Tag");
             }
@@ -94,7 +86,6 @@ namespace WebBlog.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, TagViewModel com)
         {
-          //  Program.Logger.Info("Информационное сообщение edit tag");
             if (ModelState.IsValid)
             {
                 var r1 = _mapper.Map<Tag>(com);
@@ -102,7 +93,6 @@ namespace WebBlog.Web.Controllers
                 return RedirectToAction("Index", "Tag");
             }
             else return View(com);
-
         }
 
         [HttpPost]

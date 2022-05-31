@@ -15,7 +15,7 @@ namespace WebBlog.Web.Controllers
 {
     public class RoleController : Controller
     {
-        public RoleService rs;
+        private RoleService rs;
         private IMapper _mapper;
 
         public RoleController( RoleService rs1, IMapper mapper)

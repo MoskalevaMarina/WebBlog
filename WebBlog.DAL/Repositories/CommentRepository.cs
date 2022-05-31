@@ -27,8 +27,6 @@ namespace WebBlog.DAL.Repositories
             return rl;
         }
 
-
-
         /// <summary>
         /// получить список комментариев для статьи
         /// </summary>

@@ -11,14 +11,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebBlog.DAL.Repositories
 {
-    public class TagRepository:Repository<Tag>
+    public class TagRepository : Repository<Tag>
     {
         public TagRepository(ApplicationContext context) : base(context)
-        {        }
+        { }
 
         public Tag GetTag(int id)
         {
             return Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Id == id).FirstOrDefault();
+        }
+
+        public Tag GetTag(string name)
+        {
+            return Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Name == name).FirstOrDefault();
         }
 
         public IEnumerable<Tag> Find(Func<Tag, Boolean> predicate)
@@ -30,17 +35,17 @@ namespace WebBlog.DAL.Repositories
         public List<SelectListItem> GetSelectTags()
         {
             var rl = Set.Include(m => m.Posts).Include(m => m.User).Select(a => new SelectListItem()
-                          {
-                              Value = a.Id.ToString(),
-                              Text = a.Name
-                          })
-                          .ToList(); 
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name
+            })
+                          .ToList();
             return rl;
         }
 
         public List<SelectListItem> GetSelectTags(Post post)
         {
-            var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m=>m.Posts.Contains(post)).Select(a => new SelectListItem()
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Posts.Contains(post)).Select(a => new SelectListItem()
             {
                 Value = a.Id.ToString(),
                 Text = a.Name
@@ -53,18 +58,18 @@ namespace WebBlog.DAL.Repositories
         {
             var rl = Set.ToList();
             List<Tag> j = rl.Except(ta).ToList();
-           var t= j.Select(a => new SelectListItem()
+            var t = j.Select(a => new SelectListItem()
             {
                 Value = a.Id.ToString(),
                 Text = a.Name
             })
-                          .ToList();
+                           .ToList();
             return t;
         }
 
         public IEnumerable<Tag> GetAllTags()
         {
-            var rl = Set.Include(m=>m.Posts).Include(m => m.User).ToList();
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).ToList();
             return rl;
         }
 
@@ -76,13 +81,11 @@ namespace WebBlog.DAL.Repositories
         public IEnumerable<Tag> GetbyPost(Post post)
         {
             var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.Posts.Contains(post)).AsEnumerable();
-
             return rl;
         }
         public IEnumerable<Tag> GetbyUser(int iduser)
         {
-            var rl = Set.Include(m => m.Posts).Include(m=>m.User).Where(m => m.UserId==iduser).AsEnumerable();
-
+            var rl = Set.Include(m => m.Posts).Include(m => m.User).Where(m => m.UserId == iduser).AsEnumerable();
             return rl;
         }
     }

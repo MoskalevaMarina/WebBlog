@@ -25,20 +25,17 @@ namespace WebBlog.Web.Controllers
         {
             if (User.IsInRole("user"))
             {
-              
                 return RedirectToAction("Index", "User");
             }
             else
             if (User.IsInRole("admin"))
             {
-
                 return RedirectToAction("IndexAdmin", "User");
             }
             else
             {
                 return View();
             }
-
         }
 
         public IActionResult Privacy()
@@ -49,13 +46,12 @@ namespace WebBlog.Web.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-           
             int statusCode = (int)HttpStatusCode.InternalServerError;
-           
+
             // Строка для публикации в лог
             string logMessage = $"[{DateTime.Now}]:  Сатусный код: " + statusCode.ToString();
 
-            if(statusCode==403)
+            if (statusCode == 403)
             {
                 logMessage += "  Запрещено";
             }
@@ -70,7 +66,6 @@ namespace WebBlog.Web.Controllers
 
             Program.Logger.Error(logMessage);
             return View("ErrorSomethingWentWrong");
-          //  return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

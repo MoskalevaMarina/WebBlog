@@ -8,9 +8,7 @@ namespace WebBlog.Web.Models
 {
     public class RolesUserModel
     {
-        public User Us { get; set; }
-
-     
+        public User Us { get; set; }     
         public List<Role> Roles {get; set;}
     }
 }

@@ -19,8 +19,7 @@ namespace WebBlog.DAL.EF
         public ApplicationContext(DbContextOptions ff) : base(ff)
         {
         }
-        // => Database.EnsureCreated();
-
+       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=.\\bd.db");

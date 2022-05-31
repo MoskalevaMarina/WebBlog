@@ -37,7 +37,6 @@ namespace WebBlog.Web.Models
         public int IsConfirmed { get; set; }
         [Display(Name = "Дата регистрации")]
         public string DataCreate { get; set; }
-
         public List<Tag> Tags { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Post> Posts { get; set; }

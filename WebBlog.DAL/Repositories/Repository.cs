@@ -20,7 +20,6 @@ namespace WebBlog.DAL.Repositories
             _db = db;
             var set = _db.Set<T>();
             set.Load();
-
             Set = set;
         }
 

@@ -18,11 +18,6 @@ namespace WebBlog.Web.Models
         [Display(Name = "Описание роли")]
         [Required(ErrorMessage = "Введите описание")]
         public string Description { get; set; }
-        public List<User> Users { get; set; }
-        // public List<User> Users { get; set; }
-         // public RoleViewModel()
-       //   {
-       //       Users = new List<User>();
-      //   }
+        public List<User> Users { get; set; }      
     }
 }

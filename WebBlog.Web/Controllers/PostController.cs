@@ -43,21 +43,14 @@ namespace WebBlog.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
                 User user = us.GetUserbyEmail(User.Identity.Name);
                 if (user != null)
                 {
-
-
                     var sp = _mapper.Map<IEnumerable<PostsViewModel>>(rs.GetPostbyUser(user.Id));
                     return View(sp);
-
-
                 }
-
             }
             return NotFound();
-
         }
 
         [HttpGet]
@@ -65,7 +58,6 @@ namespace WebBlog.Web.Controllers
         {
             PostsViewModel pm = new PostsViewModel();
             pm.ListTags = ts.GetTagSelectl();
-
             return View(pm);
         }
 
@@ -94,17 +86,11 @@ namespace WebBlog.Web.Controllers
                 post.Image = path;
                 var pp = us.GetUserbyEmail(User.Identity.Name);
                 post.UserId = pp.Id;
-
-                post.CreateTime = DateTime.Today.ToLongDateString();
                 var r1 = _mapper.Map<Post>(post);
-
-                //  r1.UserId = iduser;
                 r1.User = us.GetUser(r1.UserId);
-
                 rs.AddPost(r1);
 
                 int gg = rs.GetPosts().Where(m => m.Title == r1.Title).LastOrDefault().Id;
-
 
                 if (post.SelectedTags != null)
                 {
@@ -143,8 +129,6 @@ namespace WebBlog.Web.Controllers
                 if (post != null)
                 {
                     var pm = _mapper.Map<PostEditViewModel>(post);
-                    //  PostEditViewModel pm = new PostEditViewModel();
-                    //    pm.post = post;
                     pm.ListTagsAdd = ts.GetTagSelectl(pm.Tags);
                     pm.ListTagsDel = ts.GetTagSelectl(post);
                     pm.SelectedTagsAdd = new int[pm.ListTagsAdd.Count()];
@@ -165,13 +149,11 @@ namespace WebBlog.Web.Controllers
                 {
                     Post post = rs.GetPost(com.Id);
 
-
                     if (post != null)
                     {
                         string path;
                         if (upload != null)
-                        {
-                            // путь к папке Files
+                        {   // путь к папке Files
                             path = "/images/images_post/" + upload.FileName;
                             // сохраняем файл в папку Files в каталоге wwwroot
                             using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
@@ -183,7 +165,6 @@ namespace WebBlog.Web.Controllers
                         {
                             path = "/images/images_post/article2.jpg";
                         }
-
 
                         var r1 = _mapper.Map<Post>(com);
                         r1.Image = path;
@@ -197,7 +178,6 @@ namespace WebBlog.Web.Controllers
                         {
                             rs.DeletePostSelecttag(com.SelectedTagsDel, post.Id);
                         }
-
                         rs.UpdatePost(com.Id, r1);
                     }
                 }

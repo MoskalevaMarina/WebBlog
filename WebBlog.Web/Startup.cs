@@ -47,46 +47,42 @@ namespace WebBlog.Web
 
             services.AddSingleton(mapper);
 
-
             services
                 .AddCustomRepository<Post, PostRepository>()
-           .AddCustomRepository<Role, RoleRepository>()
-           .AddCustomRepository<User, UserRepository>()
-            .AddCustomRepository<Comment, CommentRepository>()
-              .AddCustomRepository<Tag, TagRepository>()
-           .AddUnitOfWork()
+                .AddCustomRepository<Role, RoleRepository>()
+                .AddCustomRepository<User, UserRepository>()
+                .AddCustomRepository<Comment, CommentRepository>()
+                .AddCustomRepository<Tag, TagRepository>()
+                .AddUnitOfWork()
 
-           .AddTransient<RoleService>()
-       .AddTransient<UserService>()
-         .AddTransient<CommentService>()
-           .AddTransient<PostService>()
-            .AddTransient<TagService>()
-       .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-       .AddCookie(options =>
-       {
-           options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
-           options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/User/Loin");
-       });
-
+                .AddTransient<RoleService>()
+                .AddTransient<UserService>()
+                .AddTransient<CommentService>()
+                .AddTransient<PostService>()
+                .AddTransient<TagService>()
+            .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+             {
+               options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
+                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/User/Loin");
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
             app.UseExceptionHandler("/Home/Error");
 
             app.UseStaticFiles();
 
             app.UseRouting();
-            //Используем метод Use, чтобы запрос передавался дальше по конвейеру
+           
             app.Use(async (context, next) =>
             {
                 // Строка для публикации в лог
                 string logMessage = $"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}{Environment.NewLine}";
 
                 Program.Logger.Info(logMessage);
-                //  Program.Logger.Error(logMessage);
                 await next.Invoke();
             });
 

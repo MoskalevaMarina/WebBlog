@@ -12,42 +12,29 @@ namespace WebBlog.DAL.Repositories
 {
     public class PostRepository : Repository<Post>
     {
-        public PostRepository(ApplicationContext context): base(context)
+        public PostRepository(ApplicationContext context) : base(context)
         { }
-
-        public Post kk(string ll)
-        {
-            return Set.Include(m => m.Tags).Include(m => m.Comments).ThenInclude(m => m.User).Include(m => m.User).Where(m => m.Title == ll).FirstOrDefault();
-
-            //  return Set.FirstOrDefault();
-        }
 
         public Post GetPostbyid(int id)
         {
-            return Set.Include(m=>m.Tags).Include(m=>m.Comments).ThenInclude(m=>m.User).Include(m => m.User).Where(m=>m.Id==id).FirstOrDefault();
+            return Set.Include(m => m.Tags).Include(m => m.Comments).ThenInclude(m => m.User).Include(m => m.User).Where(m => m.Id == id).FirstOrDefault();
         }
 
-    
+
         public IEnumerable<Post> Find(Func<Post, Boolean> predicate)
         {
             var rol = Set.AsEnumerable().Where(predicate).ToList();
             return rol;
         }
 
-     /*   public override IEnumerable<Post> GetAll()
-        {
-            var rl = Set.Include(m => m.Tags).Include(m => m.Comments).AsEnumerable();
-            return rl;
-        } */
-
         public IEnumerable<Post> GetAllPosts()
         {
-            return Set.Include(m=>m.User).Include(m=>m.Tags).Include(m=>m.Comments).ThenInclude(m => m.User).AsEnumerable();
+            return Set.Include(m => m.User).Include(m => m.Tags).Include(m => m.Comments).ThenInclude(m => m.User).AsEnumerable();
         }
 
         public IEnumerable<Post> GetPostsbyuser(int userid)
         {
-            return Set.Include(m => m.User).Include(m => m.Tags).Include(m => m.Comments).ThenInclude(m => m.User).Where(m=>m.UserId==userid).AsEnumerable();
+            return Set.Include(m => m.User).Include(m => m.Tags).Include(m => m.Comments).ThenInclude(m => m.User).Where(m => m.UserId == userid).AsEnumerable();
         }
 
         /// <summary>
@@ -100,9 +87,5 @@ namespace WebBlog.DAL.Repositories
             var rl = Set.Include(m => m.Tags).Include(m => m.User).Include(m => m.Comments).ThenInclude(m => m.User).Where(m => m.Title == name).FirstOrDefault();
             return rl;
         }
-
-        
-
-
     }
 }

@@ -7,23 +7,15 @@ using System.Threading.Tasks;
 
 namespace WebBlog.DAL.Entities
 {
-   public class Tag
+    public class Tag
     {
         public int Id { get; set; }
 
         [Display(Name = "Название тега")]
         [Required(ErrorMessage = "Введите название тега")]
         public string Name { get; set; }
-
         public int UserId { get; set; }
-
         public User User { get; set; }
         public List<Post> Posts { get; set; }
-      //  public Tag()
-      //  {
-      //      Posts = new List<Post>();
-      //  }
-
-
     }
 }

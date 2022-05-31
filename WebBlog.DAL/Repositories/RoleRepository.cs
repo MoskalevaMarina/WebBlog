@@ -14,7 +14,6 @@ namespace WebBlog.DAL.Repositories
     {
         public RoleRepository(ApplicationContext context) : base(context)
         {
-
         }
 
         public Role GetRole(int? id)
